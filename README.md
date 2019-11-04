@@ -1,6 +1,9 @@
-## Exercício TP1 - Tecnologias Dinâmicas para a Internet
+Entrega TP1 - Tecnologias Dinâmicas para a Internet
+===================================================
 
-### **Instalação**
-##### Fazer clone do repositório - git clone
+####Exercício laravel
 
-###### Autor: Sofia Ribeiro
+Data de entrega até 15/11/2019
+
+######Autor:
+Sofia Ribeiro
