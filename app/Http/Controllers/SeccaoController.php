@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Noticia;
+use App\Seccao;
 use Illuminate\Http\Request;
 
-class NoticiaController extends Controller
+class SeccaoController extends Controller
 {
     /**
-     * @group News management
+     * @group Sections management
      * 
-     * Display a listing of the resource.
+     * Display all sections inserted in database.
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,10 +43,10 @@ class NoticiaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Noticia  $noticia
+     * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function show(Noticia $noticia)
+    public function show(Seccao $seccao)
     {
         //
     }
@@ -54,10 +54,10 @@ class NoticiaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Noticia  $noticia
+     * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function edit(Noticia $noticia)
+    public function edit(Seccao $seccao)
     {
         //
     }
@@ -66,10 +66,10 @@ class NoticiaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Noticia  $noticia
+     * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Noticia $noticia)
+    public function update(Request $request, Seccao $seccao)
     {
         //
     }
@@ -77,10 +77,10 @@ class NoticiaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Noticia  $noticia
+     * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Noticia $noticia)
+    public function destroy(Seccao $seccao)
     {
         //
     }

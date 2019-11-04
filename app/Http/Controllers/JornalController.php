@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\JornalStoreRequest;
 use App\Jornal;
 use Illuminate\Http\Request;
 
 class JornalController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @group Journal management
+     * 
+     * Display all journals and the user who created it.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $jornals = Jornal::with('user')->get();
+
+        //return response($jornals, 200); //status code correspondente à resposta do pedido
+
+        $response = [
+            'data' => $jornals,
+            'message' => 'Listagem de jornais',
+            'result' => 'OK'
+        ];
+
+        return response($response, 200);
     }
 
     /**
@@ -33,9 +46,28 @@ class JornalController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JornalStoreRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $file = $request->file('image')->store('images');
+
+        $data['image'] = $file;
+
+        //return $file;
+
+        $jornals = Jornal::create($data);
+
+        //return $post;
+        //return response($post, 201);
+
+        $response = [
+            'data' => $jornals,
+            'message' => 'Jornal criado',
+            'result' => 'OK'
+        ];
+
+        return response($response);
     }
 
     /**

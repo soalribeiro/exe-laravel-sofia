@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Feedback;
 use Illuminate\Http\Request;
 
-class FeebackController extends Controller
+class FeedbackController extends Controller
 {
     /**
+     * @group Feedback Management
+     * 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

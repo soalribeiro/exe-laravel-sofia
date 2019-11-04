@@ -26,6 +26,13 @@ Auth::routes();
  */
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+/* mostrar jornais */
+Route::get('/jornais', 'JornalController@index')->name('index');
+
+
+
+
 /**
  * Backoffice Routes
  */
