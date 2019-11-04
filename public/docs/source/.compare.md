@@ -64,6 +64,7 @@ null
 #Journal management
 
 
+Methods for managing Journals.
 <!-- START_d984a021fe81033b627b61ae0096b7e7 -->
 ## Display all journals and the user who created it.
 
@@ -94,27 +95,7 @@ fetch(url, {
 
 ```json
 {
-    "data": [
-        {
-            "id": 1,
-            "titulo-jor": "Jornal 1",
-            "descricao-jor": "isto é um jornal bla bla bla",
-            "user_id": 1,
-            "created_at": null,
-            "updated_at": null,
-            "deleted_at": null,
-            "user": {
-                "id": 1,
-                "name": "Sofia Ribeiro",
-                "email": "saribeiro@ua.pt",
-                "email_verified_at": null,
-                "role_id": 1,
-                "created_at": null,
-                "updated_at": null,
-                "deleted_at": null
-            }
-        }
-    ],
+    "data": [],
     "message": "Listagem de jornais",
     "result": "OK"
 }
@@ -125,6 +106,225 @@ fetch(url, {
 
 
 <!-- END_d984a021fe81033b627b61ae0096b7e7 -->
+
+<!-- START_0be096f9a4a24696c0101813229d4400 -->
+## Show the form for creating a new resource.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/jornal/create" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/jornal/create`
+
+
+<!-- END_0be096f9a4a24696c0101813229d4400 -->
+
+<!-- START_7afb5643f3d58dcaf7b7260a3f7c8503 -->
+## Insert a new journal.
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost/api/jornal" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/jornal`
+
+
+<!-- END_7afb5643f3d58dcaf7b7260a3f7c8503 -->
+
+<!-- START_f7c0e9011ca5e915ffdd557c2fcc4dca -->
+## Display the journal.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/jornal/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (404):
+
+```json
+{
+    "message": "No query results for model [App\\Jornal] 1"
+}
+```
+
+### HTTP Request
+`GET api/jornal/{jornal}`
+
+
+<!-- END_f7c0e9011ca5e915ffdd557c2fcc4dca -->
+
+<!-- START_553cb7ab2a5bbbfb4fb264cb8101f070 -->
+## Show the form for editing the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/jornal/1/edit" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (404):
+
+```json
+{
+    "message": "No query results for model [App\\Jornal] 1"
+}
+```
+
+### HTTP Request
+`GET api/jornal/{jornal}/edit`
+
+
+<!-- END_553cb7ab2a5bbbfb4fb264cb8101f070 -->
+
+<!-- START_c9596a52c5b6129b0ce629d00465bab2 -->
+## Update a specific journal ID.
+
+> Example request:
+
+```bash
+curl -X PUT "http://localhost/api/jornal/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/jornal/{jornal}`
+
+`PATCH api/jornal/{jornal}`
+
+
+<!-- END_c9596a52c5b6129b0ce629d00465bab2 -->
+
+<!-- START_393ce75aea456cc35670e7edc3a415db -->
+## Remove a specific journal ID.
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost/api/jornal/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/jornal/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE api/jornal/{jornal}`
+
+
+<!-- END_393ce75aea456cc35670e7edc3a415db -->
 
 #News management
 
@@ -169,221 +369,6 @@ null
 
 #general
 
-
-<!-- START_0be096f9a4a24696c0101813229d4400 -->
-## Show the form for creating a new resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/jornal/create" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal/create");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/jornal/create`
-
-
-<!-- END_0be096f9a4a24696c0101813229d4400 -->
-
-<!-- START_7afb5643f3d58dcaf7b7260a3f7c8503 -->
-## Store a newly created resource in storage.
-
-> Example request:
-
-```bash
-curl -X POST "http://localhost/api/jornal" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/jornal`
-
-
-<!-- END_7afb5643f3d58dcaf7b7260a3f7c8503 -->
-
-<!-- START_f7c0e9011ca5e915ffdd557c2fcc4dca -->
-## Display the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/jornal/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/jornal/{jornal}`
-
-
-<!-- END_f7c0e9011ca5e915ffdd557c2fcc4dca -->
-
-<!-- START_553cb7ab2a5bbbfb4fb264cb8101f070 -->
-## Show the form for editing the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/jornal/1/edit" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal/1/edit");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/jornal/{jornal}/edit`
-
-
-<!-- END_553cb7ab2a5bbbfb4fb264cb8101f070 -->
-
-<!-- START_c9596a52c5b6129b0ce629d00465bab2 -->
-## Update the specified resource in storage.
-
-> Example request:
-
-```bash
-curl -X PUT "http://localhost/api/jornal/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/jornal/{jornal}`
-
-`PATCH api/jornal/{jornal}`
-
-
-<!-- END_c9596a52c5b6129b0ce629d00465bab2 -->
-
-<!-- START_393ce75aea456cc35670e7edc3a415db -->
-## Remove the specified resource from storage.
-
-> Example request:
-
-```bash
-curl -X DELETE "http://localhost/api/jornal/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/jornal/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/jornal/{jornal}`
-
-
-<!-- END_393ce75aea456cc35670e7edc3a415db -->
 
 <!-- START_b998b180dfdf8db4acac794a90f5c1d0 -->
 ## Show the form for creating a new resource.

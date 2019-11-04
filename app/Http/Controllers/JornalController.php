@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\JornalStoreRequest;
 use App\Jornal;
 use Illuminate\Http\Request;
+use App\Http\Requests\JornalStoreRequest;
+use Illuminate\Support\Facades\Validator;
+
+/**
+ * @group Journal management
+ * 
+ * Methods for managing Journals.
+ */
+
 
 class JornalController extends Controller
 {
     /**
-     * @group Journal management
-     * 
      * Display all journals and the user who created it.
      *
      * @return \Illuminate\Http\Response
@@ -19,15 +25,14 @@ class JornalController extends Controller
     {
         $jornals = Jornal::with('user')->get();
 
-        //return response($jornals, 200); //status code correspondente à resposta do pedido
-
         $response = [
             'data' => $jornals,
             'message' => 'Listagem de jornais',
             'result' => 'OK'
         ];
 
-        return response($response, 200);
+        return view('jornais')
+            ->with('jornals', $jornals);
     }
 
     /**
@@ -41,7 +46,7 @@ class JornalController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Insert a new journal.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -54,12 +59,7 @@ class JornalController extends Controller
 
         $data['image'] = $file;
 
-        //return $file;
-
         $jornals = Jornal::create($data);
-
-        //return $post;
-        //return response($post, 201);
 
         $response = [
             'data' => $jornals,
@@ -67,18 +67,18 @@ class JornalController extends Controller
             'result' => 'OK'
         ];
 
-        return response($response);
+        return response($response, 200);
     }
 
     /**
-     * Display the specified resource.
+     * Display the journal.
      *
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
     public function show(Jornal $jornal)
     {
-        //
+        return $jornal;
     }
 
     /**
@@ -93,7 +93,7 @@ class JornalController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update a specific journal ID.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Jornal  $jornal
@@ -101,17 +101,51 @@ class JornalController extends Controller
      */
     public function update(Request $request, Jornal $jornal)
     {
-        //
+        $data = $request->all();
+
+        $validator = Validator::make($data, [
+            'titulo-jor' => 'string|max:255',
+            'descricao-jor' => 'text|max:500',
+            'image' => 'image',
+            'user_id' => 'exists:users,id'
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors()->all();
+        }
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image')->store('images');
+            $data['image'] = $file;
+        }
+
+        $jornal->update($data);
+
+        $response = [
+            'data' => $jornal,
+            'message' => 'Jornal editado',
+            'result' => 'OK'
+        ];
+
+        return response($response, 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a specific journal ID.
      *
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
     public function destroy(Jornal $jornal)
     {
-        //
+        $jornal->delete();
+
+        $response = [
+            'data' => '',
+            'message' => 'Jornal apagado.',
+            'result' => 'OK'
+        ];
+
+        return response($response);
     }
 }

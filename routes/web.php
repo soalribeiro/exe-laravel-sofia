@@ -28,7 +28,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 /* mostrar jornais */
-Route::get('/jornais', 'JornalController@index')->name('index');
+Route::get('/jornais', 'JornalController@index')->name('lista-jornais');
+
+/* editar jornal */
+Route::get('/editar-jornal', 'JornalController@update')->name('editar-jornal');
 
 
 
