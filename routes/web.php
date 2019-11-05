@@ -40,6 +40,10 @@ Route::put('/inserir-jornal', 'JornalController@store')->name('inserir-jornal');
 
 
 
+/* mostrar notícias */
+Route::get('/noticias', 'NoticiaController@index')->name('lista-noticias');
+
+
 /**
  * Backoffice Routes
  */

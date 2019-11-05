@@ -55,7 +55,7 @@
             </div>
 
             <div class="form-group row">
-                <label for="user_id" class="col-md-4 col-form-label text-md-right">Capa do jornal</label>
+                <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
 
                 <div class="col-md-6">
                     <select name="user_id">

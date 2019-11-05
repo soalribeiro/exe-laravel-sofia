@@ -10,13 +10,22 @@ class NoticiaController extends Controller
     /**
      * @group News management
      * 
-     * Display a listing of the resource.
+     * Apresentar todas as notícias.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $noticias = Noticia::with('user')->get();
+
+        $response = [
+            'data' => $noticias,
+            'message' => 'Listagem de notícias',
+            'result' => 'OK'
+        ];
+
+        return view('noticias')
+            ->with('noticias', $noticias);
     }
 
     /**
