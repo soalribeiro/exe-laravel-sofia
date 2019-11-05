@@ -2,12 +2,12 @@
 
 @section('content')
 
-<h1 class="h3 mb-2 text-gray-800">Editar Jornal {{ $jornal->{'titulo-jor'} }}</h1>
+<h1 class="h3 mb-2 text-gray-800">Inserir Jornal</h1>
 
 <div class="card shadow mb-4">
     <div class="card-body">
 
-        <form class="form-horizontal" role="form" method="POST" action="{{ route('editar-jornal', $jornal->id) }}" enctype="multipart/form-data">
+        <form class="form-horizontal" role="form" method="POST" action="{{ route('inserir-jornal') }}" enctype="multipart/form-data">
 
             {{ csrf_field() }}
             {{method_field('put')}}
@@ -16,7 +16,7 @@
                 <label for="title" class="col-md-4 col-form-label text-md-right">Título</label>
 
                 <div class="col-md-6">
-                    <input id="titulo-jor" type="text" class="form-control @error('titulo-jor') is-invalid @enderror" name="titulo-jor" value="{{ $jornal->{'titulo-jor'} }}" autofocus>
+                    <input id="titulo-jor" type="text" class="form-control @error('titulo-jor') is-invalid @enderror" name="titulo-jor" value="{{ old('titulo-jor') }}" autofocus>
 
                     @error('titulo-jor')
                     <span class="invalid-feedback" role="alert">
@@ -30,7 +30,7 @@
                 <label for="descricao-jor" class="col-md-4 col-form-label text-md-right">Descrição do jornal</label>
 
                 <div class="col-md-6">
-                    <input id="descricao-jor" type="text" class="form-control @error('descricao-jor') is-invalid @enderror" name="descricao-jor" value="{{ $jornal->{'descricao-jor'} }}">
+                    <input id="descricao-jor" type="text" class="form-control @error('descricao-jor') is-invalid @enderror" name="descricao-jor" value="{{ old('descricao-jor') }}">
 
                     @error('descricao-jor')
                     <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
 
                 <div class="col-md-6">
                     <select name="user_id">
-                        <option selected value="{{ $jornal->user_id }}"> {{ $jornal->user->name }} </option>
+                        <option selected value="{{ $jornal->user_id }}"> {{ $jornal->user_id }} </option>
                     </select>
 
                     @error('user_id')

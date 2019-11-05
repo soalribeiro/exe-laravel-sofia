@@ -30,9 +30,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 /* mostrar jornais */
 Route::get('/jornais', 'JornalController@index')->name('lista-jornais');
 
-/* editar jornal */
+/* inserir jornal */
 Route::get('/editar-jornal/{jornal}', 'JornalController@formjornal')->name('editar-jornal-form');
 Route::put('/editar-jornal/{jornal}/edit', 'JornalController@update')->name('editar-jornal');
+
+/* editar jornal */
+Route::get('/inserir-jornal', 'JornalController@inserirjornal')->name('inserir-jornal-form');
+Route::put('/inserir-jornal', 'JornalController@store')->name('inserir-jornal');
 
 
 
