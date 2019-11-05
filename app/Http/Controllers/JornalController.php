@@ -105,7 +105,7 @@ class JornalController extends Controller
 
         $validator = Validator::make($data, [
             'titulo-jor' => 'string|max:255',
-            'descricao-jor' => 'text|max:500',
+            'descricao-jor' => 'text',
             'image' => 'image',
             'user_id' => 'exists:users,id'
         ]);
@@ -127,7 +127,8 @@ class JornalController extends Controller
             'result' => 'OK'
         ];
 
-        return response($response, 200);
+        //return response($response, 200);
+        return redirect()->route('jornais');
     }
 
     /**
@@ -147,5 +148,11 @@ class JornalController extends Controller
         ];
 
         return response($response);
+    }
+
+    public function formjornal(Jornal $jornal)
+    {
+        return view('editar-jornal-form')
+            ->with('jornal', $jornal);
     }
 }
