@@ -110,9 +110,20 @@ class JornalController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image')->store('images');
             $data['image'] = $file;
-        }
 
-        $jornal->update($data);
+            $jornal->update(array(
+                'titulo-jor' => $data['titulo-jor'],
+                'descricao-jor' => $data['descricao-jor'],
+                'image' => $data['image'],
+                'user_id' => $data['user_id']
+            ));
+        } else {
+            $jornal->update(array(
+                'titulo-jor' => $data['titulo-jor'],
+                'descricao-jor' => $data['descricao-jor'],
+                'user_id' => $data['user_id']
+            ));
+        }
 
         $response = [
             'data' => $jornal,

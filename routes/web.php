@@ -42,9 +42,34 @@ Route::put('/editar-jornal/{jornal}/edit', 'JornalController@update')->name('edi
 Route::delete('/elimina-jornal/{jornal}', 'JornalController@destroy')->name('eliminar-jornal');
 
 
-
 /* mostrar notícias */
 Route::get('/noticias', 'NoticiaController@index')->name('lista-noticias');
+
+/* inserir notícias */
+Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
+Route::post('/inserir-noticia', 'NoticiaController@store')->name('inserir-noticia');
+
+/* editar notícias */
+Route::get('/editar-noticia/{noticium}', 'NoticiaController@edit')->name('editar-noticia-form');
+Route::put('/editar-noticia/{noticium}/edit', 'NoticiaController@update')->name('editar-noticia');
+
+/* eliminar notícias */
+Route::delete('/elimina-noticia/{noticium}', 'NoticiaController@destroy')->name('eliminar-noticia');
+
+
+/* mostrar secções */
+Route::get('/lista-seccaos', 'SeccaoController@index')->name('lista-seccaos');
+
+/* inserir secções */
+Route::get('/inserir-seccao', 'SeccaoController@create')->name('inserir-seccao-form');
+Route::post('/inserir-seccao', 'SeccaoController@store')->name('inserir-seccao');
+
+/* editar secções */
+Route::get('/editar-seccao/{seccao}', 'SeccaoController@edit')->name('editar-seccao-form');
+Route::put('/editar-seccao/{seccao}/edit', 'SeccaoController@update')->name('editar-seccao');
+
+/* eliminar secções */
+Route::delete('/elimina-seccao/{seccao}', 'SeccaoController@destroy')->name('eliminar-seccao');
 
 
 /**

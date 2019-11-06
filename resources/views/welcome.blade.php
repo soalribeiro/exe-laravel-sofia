@@ -90,6 +90,7 @@
             <div class="links">
                 <a href="{{ route('lista-jornais') }}">Jornais</a>
                 <a href="{{ route('lista-noticias') }}">Notícias</a>
+                <a href="{{ route('lista-seccaos') }}">Secções</a>
             </div>
         </div>
     </div>

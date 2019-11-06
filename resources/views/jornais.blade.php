@@ -25,15 +25,15 @@
 
                         <p class="blockquote-footer text-right"><cite title="Source Title">{{ $jornal->user->name }}</cite></p>
 
-                        <div class="col-md-10 mx-auto">
+                        <div class="col-md-10 text-center mx-auto">
                             <a href="{{ route('lista-noticias') }}" class="btn btn-primary">Ler notícias</a>
                         </div>
 
-                        <div class="col-md-9 mx-auto my-1">
+                        <div class="col-md-8 text-center mx-auto my-1">
                             <a href="{{ route('editar-jornal-form', $jornal->id) }}" class="btn btn-outline-primary btn-sm ">Editar jornal</a>
                         </div>
 
-                        <div class="col-md-10 mx-auto mt-4">
+                        <div class="col-md-9 text-center mx-auto mt-4">
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarJornal{{ $jornal->id }}">Apagar jornal</button>
                         </div>
 

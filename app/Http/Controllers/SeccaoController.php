@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeccaoStoreRequest;
+use App\Http\Requests\SeccaoUpdateRequest;
 use App\Seccao;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,16 @@ class SeccaoController extends Controller
      */
     public function index()
     {
-        //
+        $seccaos = Seccao::all();
+
+        $response = [
+            'data' => $seccaos,
+            'message' => 'Listagem de notícias',
+            'result' => 'OK'
+        ];
+
+        return view('seccaos')
+            ->with('seccaos', $seccaos);
     }
 
     /**
@@ -26,7 +37,7 @@ class SeccaoController extends Controller
      */
     public function create()
     {
-        //
+        return view('inserir-seccao-form');
     }
 
     /**
@@ -35,9 +46,19 @@ class SeccaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SeccaoStoreRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $seccaos = Seccao::create($data);
+
+        $response = [
+            'data' => $seccaos,
+            'message' => 'Secção criada.',
+            'result' => 'OK'
+        ];
+
+        return redirect()->route('lista-seccaos');
     }
 
     /**
@@ -48,7 +69,7 @@ class SeccaoController extends Controller
      */
     public function show(Seccao $seccao)
     {
-        //
+        return $seccao;
     }
 
     /**
@@ -59,7 +80,8 @@ class SeccaoController extends Controller
      */
     public function edit(Seccao $seccao)
     {
-        //
+        return view('editar-seccao-form')
+            ->with('seccao', $seccao);
     }
 
     /**
@@ -69,9 +91,20 @@ class SeccaoController extends Controller
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Seccao $seccao)
+    public function update(SeccaoUpdateRequest $request, Seccao $seccao)
     {
-        //
+        $data = $request->all();
+
+        $seccao->update($data);
+
+        $response = [
+            'data' => $seccao,
+            'message' => 'Secção editada',
+            'result' => 'OK'
+        ];
+
+        //return response($response, 200);
+        return redirect()->route('lista-seccaos');
     }
 
     /**
@@ -82,6 +115,8 @@ class SeccaoController extends Controller
      */
     public function destroy(Seccao $seccao)
     {
-        //
+        $seccao->delete();
+
+        return redirect()->route('lista-seccaos');
     }
 }

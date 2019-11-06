@@ -11,6 +11,8 @@ class Noticia extends Model
     
     protected $fillable = [
         'titulo-not',
-        'dcorpo-not'
+        'corpo-not',
+        'jornal_id',
+        'seccao_id'
     ];
 }
