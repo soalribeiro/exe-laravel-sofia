@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class JornalStoreRequest extends FormRequest
+class JornalUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,23 +26,21 @@ class JornalStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo-jor' => 'required|string|max:255',
-            'descricao-jor' => 'required|string|max:400',
-            'image' => 'required|image',
-            'user_id' => 'required|exists:users,id'
+            'titulo-jor' => 'string|max:255',
+            'descricao-jor' => 'string|max:400',
+            'image' => 'image',
+            'user_id' => 'exists:users,id'
         ];
     }
 
     public function messages()
     {
         return [
-            'titulo-jor.required' => 'É necessário escrever um título.',
             'titulo-jor.string' => 'O título tem de ser uma string.',
             'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',
-            'descricao-jor.required' => 'É necessário escrever uma descrição',
             'descricao-jor.string' => 'A descrição tem de ser uma string.',
             'descricao-jor.max:400' => 'A descrição só pode ter no máximo 400 caracteres.',
-            'image.required' => 'É necessário adicionar uma imagem',
+            'image.image' => 'Insira uma formato válido: jpg, jpeg, png, ...',
             'user_id.required' => 'O utilizador que escolheu não existe.'
         ];
     }

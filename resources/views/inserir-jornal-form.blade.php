@@ -10,7 +10,6 @@
         <form class="form-horizontal" role="form" method="POST" action="{{ route('inserir-jornal') }}" enctype="multipart/form-data">
 
             {{ csrf_field() }}
-            {{method_field('put')}}
 
             <div class="form-group row">
                 <label for="title" class="col-md-4 col-form-label text-md-right">Título</label>
@@ -59,7 +58,9 @@
 
                 <div class="col-md-6">
                     <select name="user_id">
-                        <option selected value="{{ $jornal->user_id }}"> {{ $jornal->user_id }} </option>
+                        @foreach($users as $user)
+                        <option value="{{ $user->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $user->name }}</option>
+                        @endforeach
                     </select>
 
                     @error('user_id')
@@ -70,13 +71,19 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-0">
-                <div class="col-md-6 offset-md-4">
+            <div class="form-group row mb-0 offset-md-4">
+                <div class="col-md-3">
                     <button type="submit" class="btn btn-primary">
-                        Finalizar edição
+                        Submeter
                     </button>
                 </div>
+                <div class="col-md-2 offset-md-4">
+                    <a href="{{ route('lista-jornais') }}">
+                        <button class="btn btn-danger" type="button">Cancelar</button>
+                    </a>
+                </div>
             </div>
+
         </form>
     </div>
 

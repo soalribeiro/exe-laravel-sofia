@@ -61,12 +61,12 @@ null
 
 <!-- END_baf680a48bc129f27432c80ec8921433 -->
 
-#Journal management
+#Jornais
 
 
-Methods for managing Journals.
+Métodos para gerir jornais.
 <!-- START_d984a021fe81033b627b61ae0096b7e7 -->
-## Display all journals and the user who created it.
+## Mostrar todos os jornais e o utilizador associado.
 
 > Example request:
 
@@ -94,11 +94,7 @@ fetch(url, {
 > Example response (200):
 
 ```json
-{
-    "data": [],
-    "message": "Listagem de jornais",
-    "result": "OK"
-}
+null
 ```
 
 ### HTTP Request
@@ -108,7 +104,7 @@ fetch(url, {
 <!-- END_d984a021fe81033b627b61ae0096b7e7 -->
 
 <!-- START_0be096f9a4a24696c0101813229d4400 -->
-## Show the form for creating a new resource.
+## Mostrar formulário para inserir novo jornal.
 
 > Example request:
 
@@ -133,10 +129,12 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -146,7 +144,7 @@ null
 <!-- END_0be096f9a4a24696c0101813229d4400 -->
 
 <!-- START_7afb5643f3d58dcaf7b7260a3f7c8503 -->
-## Insert a new journal.
+## Inserir um novo jornal.
 
 > Example request:
 
@@ -179,7 +177,7 @@ fetch(url, {
 <!-- END_7afb5643f3d58dcaf7b7260a3f7c8503 -->
 
 <!-- START_f7c0e9011ca5e915ffdd557c2fcc4dca -->
-## Display the journal.
+## Mostrar um determinado jornal.
 
 > Example request:
 
@@ -219,7 +217,7 @@ fetch(url, {
 <!-- END_f7c0e9011ca5e915ffdd557c2fcc4dca -->
 
 <!-- START_553cb7ab2a5bbbfb4fb264cb8101f070 -->
-## Show the form for editing the specified resource.
+## Mostrar formulário para editar jornal.
 
 > Example request:
 
@@ -259,7 +257,7 @@ fetch(url, {
 <!-- END_553cb7ab2a5bbbfb4fb264cb8101f070 -->
 
 <!-- START_c9596a52c5b6129b0ce629d00465bab2 -->
-## Update a specific journal ID.
+## Editar um jornal específico.
 
 > Example request:
 
@@ -294,7 +292,7 @@ fetch(url, {
 <!-- END_c9596a52c5b6129b0ce629d00465bab2 -->
 
 <!-- START_393ce75aea456cc35670e7edc3a415db -->
-## Remove a specific journal ID.
+## Remover um jornal.
 
 > Example request:
 
@@ -330,7 +328,7 @@ fetch(url, {
 
 
 <!-- START_3e0792dacbd9e7d214dcc50f52939226 -->
-## Display a listing of the resource.
+## Apresentar todas as notícias.
 
 > Example request:
 
@@ -355,7 +353,7 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (200):
 
 ```json
 null

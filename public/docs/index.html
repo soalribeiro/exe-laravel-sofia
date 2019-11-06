@@ -75,10 +75,10 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET api/feedback</code></p>
 <!-- END_baf680a48bc129f27432c80ec8921433 -->
-<h1>Journal management</h1>
-<p>Methods for managing Journals.</p>
+<h1>Jornais</h1>
+<p>Métodos para gerir jornais.</p>
 <!-- START_d984a021fe81033b627b61ae0096b7e7 -->
-<h2>Display all journals and the user who created it.</h2>
+<h2>Mostrar todos os jornais e o utilizador associado.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -99,16 +99,12 @@ fetch(url, {
 <blockquote>
 <p>Example response (200):</p>
 </blockquote>
-<pre><code class="language-json">{
-    "data": [],
-    "message": "Listagem de jornais",
-    "result": "OK"
-}</code></pre>
+<pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal</code></p>
 <!-- END_d984a021fe81033b627b61ae0096b7e7 -->
 <!-- START_0be096f9a4a24696c0101813229d4400 -->
-<h2>Show the form for creating a new resource.</h2>
+<h2>Mostrar formulário para inserir novo jornal.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -127,14 +123,16 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (500):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal/create</code></p>
 <!-- END_0be096f9a4a24696c0101813229d4400 -->
 <!-- START_7afb5643f3d58dcaf7b7260a3f7c8503 -->
-<h2>Insert a new journal.</h2>
+<h2>Inserir um novo jornal.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -156,7 +154,7 @@ fetch(url, {
 <p><code>POST api/jornal</code></p>
 <!-- END_7afb5643f3d58dcaf7b7260a3f7c8503 -->
 <!-- START_f7c0e9011ca5e915ffdd557c2fcc4dca -->
-<h2>Display the journal.</h2>
+<h2>Mostrar um determinado jornal.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -184,7 +182,7 @@ fetch(url, {
 <p><code>GET api/jornal/{jornal}</code></p>
 <!-- END_f7c0e9011ca5e915ffdd557c2fcc4dca -->
 <!-- START_553cb7ab2a5bbbfb4fb264cb8101f070 -->
-<h2>Show the form for editing the specified resource.</h2>
+<h2>Mostrar formulário para editar jornal.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -212,7 +210,7 @@ fetch(url, {
 <p><code>GET api/jornal/{jornal}/edit</code></p>
 <!-- END_553cb7ab2a5bbbfb4fb264cb8101f070 -->
 <!-- START_c9596a52c5b6129b0ce629d00465bab2 -->
-<h2>Update a specific journal ID.</h2>
+<h2>Editar um jornal específico.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -235,7 +233,7 @@ fetch(url, {
 <p><code>PATCH api/jornal/{jornal}</code></p>
 <!-- END_c9596a52c5b6129b0ce629d00465bab2 -->
 <!-- START_393ce75aea456cc35670e7edc3a415db -->
-<h2>Remove a specific journal ID.</h2>
+<h2>Remover um jornal.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -258,7 +256,7 @@ fetch(url, {
 <!-- END_393ce75aea456cc35670e7edc3a415db -->
 <h1>News management</h1>
 <!-- START_3e0792dacbd9e7d214dcc50f52939226 -->
-<h2>Display a listing of the resource.</h2>
+<h2>Apresentar todas as notícias.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -277,7 +275,7 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">null</code></pre>
 <h3>HTTP Request</h3>

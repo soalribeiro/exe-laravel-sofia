@@ -3,21 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Jornal;
-use Illuminate\Http\Request;
+use App\User;
 use App\Http\Requests\JornalStoreRequest;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\JornalUpdateRequest;
 
 /**
- * @group Journal management
+ * @group Jornais
  * 
- * Methods for managing Journals.
+ * Métodos para gerir jornais.
  */
 
 
 class JornalController extends Controller
 {
     /**
-     * Display all journals and the user who created it.
+     * Mostrar todos os jornais e o utilizador associado.
      *
      * @return \Illuminate\Http\Response
      */
@@ -36,17 +36,20 @@ class JornalController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulário para inserir novo jornal.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        $users = User::all();
+
+        return view('inserir-jornal-form')
+            ->with('users', $users);
     }
 
     /**
-     * Insert a new journal.
+     * Inserir um novo jornal.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -67,11 +70,11 @@ class JornalController extends Controller
             'result' => 'OK'
         ];
 
-        return response($response, 200);
+        return redirect()->route('lista-jornais');
     }
 
     /**
-     * Display the journal.
+     * Mostrar um determinado jornal.
      *
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
@@ -82,37 +85,27 @@ class JornalController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulário para editar jornal.
      *
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
     public function edit(Jornal $jornal)
     {
-        //
+        return view('editar-jornal-form')
+            ->with('jornal', $jornal);
     }
 
     /**
-     * Update a specific journal ID.
+     * Editar um jornal específico.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Jornal $jornal)
+    public function update(JornalUpdateRequest $request, Jornal $jornal)
     {
         $data = $request->all();
-
-        $validator = Validator::make($data, [
-            'titulo-jor' => 'string|max:255',
-            'descricao-jor' => 'string|max:500',
-            'image' => 'image',
-            'user_id' => 'exists:users,id'
-        ]);
-
-        if ($validator->fails()) {
-            return $validator->errors()->all();
-        }
 
         if ($request->hasFile('image')) {
             $file = $request->file('image')->store('images');
@@ -132,7 +125,7 @@ class JornalController extends Controller
     }
 
     /**
-     * Remove a specific journal ID.
+     * Remover um jornal.
      *
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
@@ -141,24 +134,6 @@ class JornalController extends Controller
     {
         $jornal->delete();
 
-        $response = [
-            'data' => '',
-            'message' => 'Jornal apagado.',
-            'result' => 'OK'
-        ];
-
-        return response($response);
-    }
-
-    public function formjornal(Jornal $jornal)
-    {
-        return view('editar-jornal-form')
-            ->with('jornal', $jornal);
-    }
-
-    public function inserirjornal(Jornal $jornal)
-    {
-        return view('inserir-jornal-form')
-            ->with('jornal', $jornal);
+        return redirect()->route('lista-jornais');
     }
 }
