@@ -20,7 +20,7 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
-#Feedback Management
+#Feedback
 
 
 <!-- START_baf680a48bc129f27432c80ec8921433 -->
@@ -324,9 +324,10 @@ fetch(url, {
 
 <!-- END_393ce75aea456cc35670e7edc3a415db -->
 
-#News management
+#Notícias
 
 
+Métodos para gerir notícias.
 <!-- START_3e0792dacbd9e7d214dcc50f52939226 -->
 ## Apresentar todas as notícias.
 
@@ -365,11 +366,8 @@ null
 
 <!-- END_3e0792dacbd9e7d214dcc50f52939226 -->
 
-#general
-
-
 <!-- START_b998b180dfdf8db4acac794a90f5c1d0 -->
-## Show the form for creating a new resource.
+## Mostrar formulário para criar nova notícia.
 
 > Example request:
 
@@ -394,10 +392,12 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -407,7 +407,7 @@ null
 <!-- END_b998b180dfdf8db4acac794a90f5c1d0 -->
 
 <!-- START_0762f61893b0e6cb43e2bbc304701edb -->
-## Store a newly created resource in storage.
+## Criar nova notícia.
 
 > Example request:
 
@@ -440,7 +440,7 @@ fetch(url, {
 <!-- END_0762f61893b0e6cb43e2bbc304701edb -->
 
 <!-- START_8cc30809f2423150c9e8944ef3c84fe2 -->
-## Display the specified resource.
+## Mostrar notícia em específico.
 
 > Example request:
 
@@ -465,10 +465,10 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (200):
 
 ```json
-null
+[]
 ```
 
 ### HTTP Request
@@ -478,7 +478,7 @@ null
 <!-- END_8cc30809f2423150c9e8944ef3c84fe2 -->
 
 <!-- START_e2b64a92180d97911f45a4e151785890 -->
-## Show the form for editing the specified resource.
+## Mostrar formulário para editar notícia específica.
 
 > Example request:
 
@@ -503,10 +503,12 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (500):
 
 ```json
-null
+{
+    "message": "Server Error"
+}
 ```
 
 ### HTTP Request
@@ -516,7 +518,7 @@ null
 <!-- END_e2b64a92180d97911f45a4e151785890 -->
 
 <!-- START_156ca02905b8dd3ca8e4b87881fd8031 -->
-## Update the specified resource in storage.
+## Editar notícia específica.
 
 > Example request:
 
@@ -551,7 +553,7 @@ fetch(url, {
 <!-- END_156ca02905b8dd3ca8e4b87881fd8031 -->
 
 <!-- START_7b913bb5385521eaf328d30e7c974d63 -->
-## Remove the specified resource from storage.
+## Apagar notícia específica.
 
 > Example request:
 
@@ -582,6 +584,276 @@ fetch(url, {
 
 
 <!-- END_7b913bb5385521eaf328d30e7c974d63 -->
+
+#Secções
+
+
+Métodos para gerir secções.
+<!-- START_030396ffd2b4f1352cc510e7450ccc38 -->
+## Mostrar todas as secções com utilizador, jornal e secção associados.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/seccao" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/seccao`
+
+
+<!-- END_030396ffd2b4f1352cc510e7450ccc38 -->
+
+<!-- START_0ae5b2c562c6674109b23c55f6dd26ea -->
+## Mostrar formulário para inserir nova secção.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/seccao/create" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET api/seccao/create`
+
+
+<!-- END_0ae5b2c562c6674109b23c55f6dd26ea -->
+
+<!-- START_1b1f7d56556b7285bfc23844b38df594 -->
+## Inserir um nova secção.
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost/api/seccao" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/seccao`
+
+
+<!-- END_1b1f7d56556b7285bfc23844b38df594 -->
+
+<!-- START_14b169b792b9c2b6de9d5cd55878769a -->
+## Mostrar uma determinada secção.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/seccao/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "id": 1,
+    "titulo_sec": "Política",
+    "created_at": "2019-11-06 21:20:57",
+    "updated_at": "2019-11-06 21:56:56",
+    "deleted_at": null
+}
+```
+
+### HTTP Request
+`GET api/seccao/{seccao}`
+
+
+<!-- END_14b169b792b9c2b6de9d5cd55878769a -->
+
+<!-- START_4705ad5a54d1163f8d4b2b697cb660f0 -->
+## Mostrar formulário para editar secção.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/seccao/1/edit" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (500):
+
+```json
+{
+    "message": "Server Error"
+}
+```
+
+### HTTP Request
+`GET api/seccao/{seccao}/edit`
+
+
+<!-- END_4705ad5a54d1163f8d4b2b697cb660f0 -->
+
+<!-- START_b81882dcd03a927ddf68a119e1587ef4 -->
+## Editar uma secção específica.
+
+> Example request:
+
+```bash
+curl -X PUT "http://localhost/api/seccao/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/seccao/{seccao}`
+
+`PATCH api/seccao/{seccao}`
+
+
+<!-- END_b81882dcd03a927ddf68a119e1587ef4 -->
+
+<!-- START_93f52473e766962fb6e3ef5b7362a130 -->
+## Remover uma secção.
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost/api/seccao/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE api/seccao/{seccao}`
+
+
+<!-- END_93f52473e766962fb6e3ef5b7362a130 -->
+
+#general
+
 
 <!-- START_59de906289e81ee5c26947cc935e52a4 -->
 ## Show the form for creating a new resource.

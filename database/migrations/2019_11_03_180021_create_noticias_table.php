@@ -17,6 +17,7 @@ class CreateNoticiasTable extends Migration
             $table->bigIncrements('id');
             $table->string('titulo-not');
             $table->text('corpo-not');
+            $table->string('image');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->bigInteger('jornal_id')->unsigned();

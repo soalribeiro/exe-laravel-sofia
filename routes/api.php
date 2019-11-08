@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('jornal', 'JornalController');
 Route::resource('noticia', 'NoticiaController');
 Route::resource('feedback', 'FeedbackController');
+Route::resource('seccao', 'SeccaoController');

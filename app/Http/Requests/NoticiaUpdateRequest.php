@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class JornalUpdateRequest extends FormRequest
+class NoticiaUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,22 +26,26 @@ class JornalUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo-jor' => 'string|max:255',
-            'descricao-jor' => 'string|max:400',
+            'titulo-not' => 'string|max:255',
+            'corpo-not' => 'string|max:400',
             'image' => 'image',
-            'user_id' => 'exists:users,id'
+            'user_id' => 'exists:users,id',
+            'jornal_id' => 'exists:jornals,id',
+            'seccao_id' => 'exists:seccaos,id'
         ];
     }
 
     public function messages()
     {
         return [
-            'titulo-jor.string' => 'O título tem de ser uma string.',
-            'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',
-            'descricao-jor.string' => 'A descrição tem de ser uma string.',
-            'descricao-jor.max:400' => 'A descrição só pode ter no máximo 400 caracteres.',
+            'titulo-not.string' => 'O título tem de ser uma string.',
+            'titulo-not.max:255' => 'O título só pode ter no máximo 255 caracteres.',
+            'corpo-not.string' => 'O corpo da notícias tem de ser uma string.',
+            'corpo-not.max:400' => 'O corpo da notícias só pode ter no máximo 400 caracteres.',
             'image.image' => 'Insira uma formato válido: jpg, jpeg, png, ...',
-            'user_id.exists' => 'O utilizador que escolheu não existe.'
+            'user_id.exists' => 'O utilizador que escolheu não existe.',
+            'jornal_id.exists' => 'O jornal que escolheu não existe.',
+            'seccao_id.exists' => 'O utilizador que escolheu não existe.'
         ];
     }
 

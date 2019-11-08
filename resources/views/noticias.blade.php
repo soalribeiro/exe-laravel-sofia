@@ -3,34 +3,80 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
 
-            @foreach($noticias as $noticia)
+            <h2 class="text-center py-4">Notícias publicadas</h2>
 
-            <div class="card" style="width: 18rem;">
-                <img src="/uploads/{{ $noticia->image }}" class="card-img-top">
-                <div class="card-body">
-                    <h4 class="card-title text-center">{{ $noticia->{'titulo-jor'} }}</h4>
+            <div class="row mb-5">
+                <a href="{{ route('inserir-noticia-form') }}">
+                    <button type="button" class="btn btn-success">Inserir nova notícia</button>
+                </a>
+            </div>
 
-                    <p class="card-text"><strong>Descrição:</strong> {{ $noticia->{'descricao-jor'} }} </p>
-                    <p class="card-text"><strong>Criado em:</strong> {{ $noticia->created_at }} </p>
+            <div class="row">
+                @foreach($noticias as $noticia)
 
-                    <p class="blockquote-footer text-right"><cite title="Source Title">{{ $noticia->user->name }}</cite></p>
+                <div class="card mx-2" style="width: 18rem;">
 
-                    <div class="row">
-                        <div class="col-md-6">
-                            <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-primary">Ler notícias</a>
+                    <img src="/uploads/{{ $noticia->image }}" class="card-img-top">
+                    <div class="card-body">
+                        <p class="card-text text-right"><strong>{{ $noticia->seccao->titulo_sec }} </strong></p>
+
+                        <h4 class="card-title">{{ $noticia->{'titulo-not'} }}</h4>
+
+                        <p class="card-text">{{ $noticia->{'corpo-not'} }}</p>
+
+                        <p class="card-text text-right"><strong>Jornal {{ $noticia->jornal->{'titulo-jor'} }} </strong></p>
+
+                        <p class="blockquote-footer text-right"><cite title="Source Title">{{ $noticia->user->name }}</cite></p>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-outline-primary">Editar notícia</a>
+                            </div>
                         </div>
-                        <div class="col-md-4 offset-md-2">
-                            <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-outline-primary btn-sm">Editar noticia</a>
+
+                        <div class="col-md-9 text-center mx-auto mt-4">
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarNot{{ $noticia->id }}">Apagar notícia</button>
+                        </div>
+
+                        <div class="col-md-9 text-center mx-auto mt-1">
+                            <a href="{{ route('lista-fb-noticia', $noticia->id) }}" class="btn btn-success btn-sm">Enviar feedback</a>
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="eliminarNot{{ $noticia->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Eliminar notícia</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Tem a certeza que pretende eliminar o notícia?
+                            </div>
+                            <div class="modal-footer">
+
+                                <form action="{{ route('eliminar-noticia', $noticia->id) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                </form>
+
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @endforeach
+
             </div>
-
-            @endforeach
-
         </div>
     </div>
-</div>
-@endsection
+    @endsection

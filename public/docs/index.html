@@ -48,7 +48,7 @@
 <p>Welcome to the generated API reference.
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
-<h1>Feedback Management</h1>
+<h1>Feedback</h1>
 <!-- START_baf680a48bc129f27432c80ec8921433 -->
 <h2>Display a listing of the resource.</h2>
 <blockquote>
@@ -254,7 +254,8 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/jornal/{jornal}</code></p>
 <!-- END_393ce75aea456cc35670e7edc3a415db -->
-<h1>News management</h1>
+<h1>Notícias</h1>
+<p>Métodos para gerir notícias.</p>
 <!-- START_3e0792dacbd9e7d214dcc50f52939226 -->
 <h2>Apresentar todas as notícias.</h2>
 <blockquote>
@@ -281,9 +282,8 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia</code></p>
 <!-- END_3e0792dacbd9e7d214dcc50f52939226 -->
-<h1>general</h1>
 <!-- START_b998b180dfdf8db4acac794a90f5c1d0 -->
-<h2>Show the form for creating a new resource.</h2>
+<h2>Mostrar formulário para criar nova notícia.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -302,14 +302,16 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (500):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/create</code></p>
 <!-- END_b998b180dfdf8db4acac794a90f5c1d0 -->
 <!-- START_0762f61893b0e6cb43e2bbc304701edb -->
-<h2>Store a newly created resource in storage.</h2>
+<h2>Criar nova notícia.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -331,7 +333,7 @@ fetch(url, {
 <p><code>POST api/noticia</code></p>
 <!-- END_0762f61893b0e6cb43e2bbc304701edb -->
 <!-- START_8cc30809f2423150c9e8944ef3c84fe2 -->
-<h2>Display the specified resource.</h2>
+<h2>Mostrar notícia em específico.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -350,14 +352,14 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (200):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">[]</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/{noticium}</code></p>
 <!-- END_8cc30809f2423150c9e8944ef3c84fe2 -->
 <!-- START_e2b64a92180d97911f45a4e151785890 -->
-<h2>Show the form for editing the specified resource.</h2>
+<h2>Mostrar formulário para editar notícia específica.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -376,14 +378,16 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (500):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/{noticium}/edit</code></p>
 <!-- END_e2b64a92180d97911f45a4e151785890 -->
 <!-- START_156ca02905b8dd3ca8e4b87881fd8031 -->
-<h2>Update the specified resource in storage.</h2>
+<h2>Editar notícia específica.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -406,7 +410,7 @@ fetch(url, {
 <p><code>PATCH api/noticia/{noticium}</code></p>
 <!-- END_156ca02905b8dd3ca8e4b87881fd8031 -->
 <!-- START_7b913bb5385521eaf328d30e7c974d63 -->
-<h2>Remove the specified resource from storage.</h2>
+<h2>Apagar notícia específica.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -427,6 +431,190 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/noticia/{noticium}</code></p>
 <!-- END_7b913bb5385521eaf328d30e7c974d63 -->
+<h1>Secções</h1>
+<p>Métodos para gerir secções.</p>
+<!-- START_030396ffd2b4f1352cc510e7450ccc38 -->
+<h2>Mostrar todas as secções com utilizador, jornal e secção associados.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/seccao" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">null</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/seccao</code></p>
+<!-- END_030396ffd2b4f1352cc510e7450ccc38 -->
+<!-- START_0ae5b2c562c6674109b23c55f6dd26ea -->
+<h2>Mostrar formulário para inserir nova secção.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/seccao/create" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/seccao/create</code></p>
+<!-- END_0ae5b2c562c6674109b23c55f6dd26ea -->
+<!-- START_1b1f7d56556b7285bfc23844b38df594 -->
+<h2>Inserir um nova secção.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/seccao" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/seccao</code></p>
+<!-- END_1b1f7d56556b7285bfc23844b38df594 -->
+<!-- START_14b169b792b9c2b6de9d5cd55878769a -->
+<h2>Mostrar uma determinada secção.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/seccao/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "id": 1,
+    "titulo_sec": "Política",
+    "created_at": "2019-11-06 21:20:57",
+    "updated_at": "2019-11-06 21:56:56",
+    "deleted_at": null
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/seccao/{seccao}</code></p>
+<!-- END_14b169b792b9c2b6de9d5cd55878769a -->
+<!-- START_4705ad5a54d1163f8d4b2b697cb660f0 -->
+<h2>Mostrar formulário para editar secção.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/seccao/1/edit" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (500):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Server Error"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/seccao/{seccao}/edit</code></p>
+<!-- END_4705ad5a54d1163f8d4b2b697cb660f0 -->
+<!-- START_b81882dcd03a927ddf68a119e1587ef4 -->
+<h2>Editar uma secção específica.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/seccao/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/seccao/{seccao}</code></p>
+<p><code>PATCH api/seccao/{seccao}</code></p>
+<!-- END_b81882dcd03a927ddf68a119e1587ef4 -->
+<!-- START_93f52473e766962fb6e3ef5b7362a130 -->
+<h2>Remover uma secção.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/seccao/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/seccao/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/seccao/{seccao}</code></p>
+<!-- END_93f52473e766962fb6e3ef5b7362a130 -->
+<h1>general</h1>
 <!-- START_59de906289e81ee5c26947cc935e52a4 -->
 <h2>Show the form for creating a new resource.</h2>
 <blockquote>

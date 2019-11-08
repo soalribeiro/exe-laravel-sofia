@@ -45,6 +45,9 @@ Route::delete('/elimina-jornal/{jornal}', 'JornalController@destroy')->name('eli
 /* mostrar notícias */
 Route::get('/noticias', 'NoticiaController@index')->name('lista-noticias');
 
+/* mostrar notícias de determinado jornal */
+Route::get('/lista-noticias-jornal/{jornal}', 'NoticiaController@listnotijor')->name('lista-noticias-jornal');
+
 /* inserir notícias */
 Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
 Route::post('/inserir-noticia', 'NoticiaController@store')->name('inserir-noticia');
@@ -70,6 +73,25 @@ Route::put('/editar-seccao/{seccao}/edit', 'SeccaoController@update')->name('edi
 
 /* eliminar secções */
 Route::delete('/elimina-seccao/{seccao}', 'SeccaoController@destroy')->name('eliminar-seccao');
+
+
+/* mostrar feedback */
+Route::get('/feedbacks', 'FeedbackController@index')->name('lista-feedbacks');
+
+/* mostrar e inserir feedback de notícia clicada */
+Route::get('/lista-fb-noticia/{noticium}', 'FeedbackController@listfbnot')->name('lista-fb-noticia');
+Route::post('/lista-fb-noticia', 'FeedbackController@inserirfbnot')->name('inserir-fb-not');
+
+/* inserir feedback */
+Route::get('/inserir-feedback', 'FeedbackController@create')->name('inserir-feedback-form');
+Route::post('/inserir-feedback', 'FeedbackController@store')->name('inserir-feedback');
+
+/* editar feedback */
+Route::get('/editar-feedback/{feedback}', 'FeedbackController@edit')->name('editar-feedback-form');
+Route::put('/editar-feedback/{feedback}/edit', 'FeedbackController@update')->name('editar-feedback');
+
+/* eliminar feedback */
+Route::delete('/elimina-feedback/{feedback}', 'FeedbackController@destroy')->name('eliminar-feedback');
 
 
 /**

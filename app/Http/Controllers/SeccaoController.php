@@ -5,14 +5,18 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SeccaoStoreRequest;
 use App\Http\Requests\SeccaoUpdateRequest;
 use App\Seccao;
-use Illuminate\Http\Request;
+
+/**
+ * @group Secções
+ * 
+ * Métodos para gerir secções.
+ *
+ */
 
 class SeccaoController extends Controller
 {
     /**
-     * @group Sections management
-     * 
-     * Display all sections inserted in database.
+     * Mostrar todas as secções com utilizador, jornal e secção associados.
      *
      * @return \Illuminate\Http\Response
      */
@@ -31,8 +35,9 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulário para inserir nova secção.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function create()
@@ -41,9 +46,9 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Inserir um nova secção.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
     public function store(SeccaoStoreRequest $request)
@@ -62,7 +67,7 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar uma determinada secção.
      *
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
@@ -73,8 +78,9 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulário para editar secção.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
@@ -85,10 +91,10 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Editar uma secção específica.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Seccao  $seccao
+     * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
     public function update(SeccaoUpdateRequest $request, Seccao $seccao)
@@ -108,7 +114,7 @@ class SeccaoController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover uma secção.
      *
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response

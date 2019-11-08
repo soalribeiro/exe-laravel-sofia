@@ -26,7 +26,7 @@
                         <p class="blockquote-footer text-right"><cite title="Source Title">{{ $jornal->user->name }}</cite></p>
 
                         <div class="col-md-10 text-center mx-auto">
-                            <a href="{{ route('lista-noticias') }}" class="btn btn-primary">Ler notícias</a>
+                            <a href="{{ route('lista-noticias-jornal', $jornal->id) }}" class="btn btn-primary">Ler notícias</a>
                         </div>
 
                         <div class="col-md-8 text-center mx-auto my-1">
