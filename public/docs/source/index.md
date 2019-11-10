@@ -642,7 +642,7 @@ fetch(url, {
 ```bash
 curl -X POST "http://localhost/api/noticia" \
     -H "Content-Type: application/json" \
-    -d '{"titulo-jor":"rerum"}'
+    -d '{"titulo-jor":"odit","corpo-jor":"et","image":"ullam","jornal_id":1,"seccao_id":19}'
 
 ```
 
@@ -655,7 +655,11 @@ let headers = {
 }
 
 let body = {
-    "titulo-jor": "rerum"
+    "titulo-jor": "odit",
+    "corpo-jor": "et",
+    "image": "ullam",
+    "jornal_id": 1,
+    "seccao_id": 19
 }
 
 fetch(url, {
@@ -676,7 +680,11 @@ fetch(url, {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    titulo-jor | string |  required  | Escolher um nome para o jornal a inserir.
+    titulo-jor | string |  required  | Nome para o jornal a inserir.
+    corpo-jor | string |  required  | Corpo da notícia.
+    image | image |  required  | Imagem para a notícia.
+    jornal_id | integer |  required  | ID de um dos jornais inseridos.
+    seccao_id | integer |  required  | ID de uma das secções inseridas.
 
 <!-- END_0762f61893b0e6cb43e2bbc304701edb -->
 
@@ -688,7 +696,7 @@ Parameter | Type | Status | Description
 ```bash
 curl -X GET -G "http://localhost/api/noticia/1" \
     -H "Content-Type: application/json" \
-    -d '{"id":16}'
+    -d '{"id":5}'
 
 ```
 
@@ -701,7 +709,7 @@ let headers = {
 }
 
 let body = {
-    "id": 16
+    "id": 5
 }
 
 fetch(url, {
@@ -814,20 +822,28 @@ fetch(url, {
 > Example request:
 
 ```bash
-curl -X DELETE "http://localhost/api/noticia/1" 
+curl -X DELETE "http://localhost/api/noticia/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":20}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/noticia/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 20
 }
 
 fetch(url, {
     method: "DELETE",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -838,6 +854,11 @@ fetch(url, {
 ### HTTP Request
 `DELETE api/noticia/{noticium}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | Enviar ID da notícia a eliminar.
 
 <!-- END_7b913bb5385521eaf328d30e7c974d63 -->
 

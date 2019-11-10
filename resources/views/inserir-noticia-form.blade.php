@@ -29,7 +29,7 @@
                 <label for="corpo-not" class="col-md-4 col-form-label text-md-right">Corpo da notícia</label>
 
                 <div class="col-md-6">
-                    <textarea id="corpo-not" type="text" class="form-control @error('corpo-not') is-invalid @enderror" name="corpo-not"></textarea>
+                    <textarea id="corpo-not" type="text" class="form-control @error('corpo-not') is-invalid @enderror" name="corpo-not" rows="4"></textarea>
 
                     @error('corpo-not')
                     <span class="invalid-feedback" role="alert">

@@ -26,19 +26,20 @@ class SeccaoUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo_sec' => 'string|max:255'
+            'titulo_sec' => 'required|string|max:255'
         ];
     }
 
     public function messages()
     {
         return [
+            'titulo_sec.required' => 'É necessário um título para a secção.',
             'titulo_sec.string' => 'O título tem de ser uma string.',
             'titulo_sec.max:255' => 'O título só pode ter no máximo 255 caracteres.'
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -50,5 +51,5 @@ class SeccaoUpdateRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

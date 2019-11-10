@@ -54,18 +54,4 @@ class NoticiaStoreRequest extends FormRequest
             'seccao_id.exists' => 'O utilizador que escolheu não existe.'
         ];
     }
-
-    protected function failedValidation(Validator $validator)
-    {
-
-        throw new HttpResponseException(
-            response()->json(
-                [
-                    'data' => $validator->errors(),
-                    'msg' => 'Erro, tente de novo.'
-                ],
-                422
-            )
-        );
-    }
 }

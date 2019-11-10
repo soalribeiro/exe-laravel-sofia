@@ -32,13 +32,6 @@ class NoticiaController extends Controller
             ->with('jornal')
             ->with('seccao')->get();
 
-        $response = [
-            'data' => $noticias,
-            'message' => 'Listagem de notícias',
-            'result' => 'OK',
-            'user' => $user
-        ];
-
         return view('noticias')
             ->with('noticias', $noticias);
     }
@@ -63,7 +56,12 @@ class NoticiaController extends Controller
     /**
      * Criar nova notícia.
      *
-     * @bodyParam  titulo-jor string required Escolher um nome para o jornal a inserir.
+     * @bodyParam  titulo-jor string required Nome para o jornal a inserir.
+     * @bodyParam  corpo-jor string required Corpo da notícia.
+     * @bodyParam  image image required Imagem para a notícia.
+     * @bodyParam  jornal_id int required ID de um dos jornais inseridos.
+     * @bodyParam  seccao_id int required ID de uma das secções inseridas.
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -107,7 +105,12 @@ class NoticiaController extends Controller
      */
     public function edit(Noticia $noticium)
     {
+        $seccaos = Seccao::all();
+        $jornais = Jornal::all();
+
         return view('editar-noticia-form')
+            ->with('seccaos', $seccaos)
+            ->with('jornais', $jornais)
             ->with('noticia', $noticium);
     }
 
@@ -128,13 +131,13 @@ class NoticiaController extends Controller
 
             $noticium->update($data);
         } else {
-            $noticium->update([
-                'titulo-jor' => $data['titulo-not'],
-                'corpo-jor' => $data['corpo-not'],
+            $noticium->update(array(
+                'titulo-not' => $data['titulo-not'],
+                'corpo-not' => $data['corpo-not'],
                 'jornal_id' => $data['jornal_id'],
                 'seccao_id' => $data['seccao_id'],
                 'user_id' => $data['user_id']
-            ]);
+            ));
         }
 
         return redirect()->route('lista-noticias');
@@ -142,6 +145,8 @@ class NoticiaController extends Controller
 
     /**
      * Apagar notícia específica.
+     * 
+     * @bodyParam id int required Enviar ID da notícia a eliminar.
      *
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response

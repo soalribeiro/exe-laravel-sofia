@@ -85,7 +85,7 @@ class FeedbackController extends Controller
      */
     public function show(Feedback $feedback)
     {
-        //
+        return $feedback;
     }
 
     /**

@@ -26,7 +26,7 @@ class FeedbackUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' => 'string',
+            'descricao' => 'required|string',
             'user_id' => 'exists:users,id',
             'noticia_id' => 'exists:noticias,id'
         ];
@@ -35,13 +35,14 @@ class FeedbackUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'descricao.required' => 'É necessário uma descrição.',
             'descricao.string' => 'O texto do feedback tem de ser uma string.',
             'user_id.exists' => 'O utilizador que escolheu não existe.',
             'noticia_id.exists' => 'A notícia que escolheu não existe.'
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -53,5 +54,5 @@ class FeedbackUpdateRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

@@ -39,7 +39,7 @@ class SeccaoStoreRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -51,5 +51,5 @@ class SeccaoStoreRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

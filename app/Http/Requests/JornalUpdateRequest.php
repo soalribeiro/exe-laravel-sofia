@@ -26,8 +26,8 @@ class JornalUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo-jor' => 'string|max:255',
-            'descricao-jor' => 'string|max:400',
+            'titulo-jor' => 'required|string|max:255',
+            'descricao-jor' => 'required|string|max:400',
             'image' => 'image',
             'user_id' => 'exists:users,id'
         ];
@@ -36,8 +36,10 @@ class JornalUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'titulo-jor.required' => 'É necessário escrever um título.',
             'titulo-jor.string' => 'O título tem de ser uma string.',
-            'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',
+            'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',            
+            'descricao-jor.required' => 'É necessário escrever uma descrição',
             'descricao-jor.string' => 'A descrição tem de ser uma string.',
             'descricao-jor.max:400' => 'A descrição só pode ter no máximo 400 caracteres.',
             'image.image' => 'Insira uma formato válido: jpg, jpeg, png, ...',
@@ -45,7 +47,7 @@ class JornalUpdateRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -57,5 +59,5 @@ class JornalUpdateRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

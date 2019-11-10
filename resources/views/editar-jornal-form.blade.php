@@ -31,7 +31,7 @@
                     <label for="descricao-jor" class="col-md-4 col-form-label text-md-right">Descrição do jornal</label>
 
                     <div class="col-md-6">
-                        <textarea id="descricao-jor" type="text" rows="3" class="form-control @error('descricao-jor') is-invalid @enderror" name="descricao-jor">{{ $jornal->{'descricao-jor'} }}</textarea>
+                        <textarea id="descricao-jor" type="text" rows="4" class="form-control @error('descricao-jor') is-invalid @enderror" name="descricao-jor">{{ $jornal->{'descricao-jor'} }}</textarea>
 
                         @error('descricao-jor')
                         <span class="invalid-feedback" role="alert">
@@ -56,10 +56,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
+                    <label for="user_id" class="col-md-4 col-form-label text-md-right">Editor</label>
 
                     <div class="col-md-6">
-                        <p class="py-2">{{ $jornal->user->name }}</p>
+                        <p class="py-2 mb-0">{{ $jornal->user->name }}</p>
                         <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ $jornal->user_id }}">
 
                         @error('user_id')

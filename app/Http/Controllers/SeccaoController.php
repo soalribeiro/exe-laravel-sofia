@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Seccao;
+use Illuminate\Http\Request;
 use App\Http\Requests\SeccaoStoreRequest;
 use App\Http\Requests\SeccaoUpdateRequest;
-use App\Seccao;
 
 /**
  * @group Secções
@@ -40,9 +41,15 @@ class SeccaoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('inserir-seccao-form');
+        $user = $request->user()->role->name;
+
+        if ($user === "reporter") {
+            abort(401);
+        } else {
+            return view('inserir-seccao-form');
+        }
     }
 
     /**
@@ -84,10 +91,16 @@ class SeccaoController extends Controller
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
      */
-    public function edit(Seccao $seccao)
+    public function edit(Seccao $seccao, Request $request)
     {
-        return view('editar-seccao-form')
-            ->with('seccao', $seccao);
+        $user = $request->user()->role->name;
+
+        if ($user === "reporter") {
+            abort(401);
+        } else {
+            return view('editar-seccao-form')
+                ->with('seccao', $seccao);
+        }
     }
 
     /**

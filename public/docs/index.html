@@ -475,7 +475,7 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-bash">curl -X POST "http://localhost/api/noticia" \
     -H "Content-Type: application/json" \
-    -d '{"titulo-jor":"rerum"}'
+    -d '{"titulo-jor":"odit","corpo-jor":"et","image":"ullam","jornal_id":1,"seccao_id":19}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/noticia");
 
@@ -485,7 +485,11 @@ let headers = {
 }
 
 let body = {
-    "titulo-jor": "rerum"
+    "titulo-jor": "odit",
+    "corpo-jor": "et",
+    "image": "ullam",
+    "jornal_id": 1,
+    "seccao_id": 19
 }
 
 fetch(url, {
@@ -512,7 +516,31 @@ fetch(url, {
 <td>titulo-jor</td>
 <td>string</td>
 <td>required</td>
-<td>Escolher um nome para o jornal a inserir.</td>
+<td>Nome para o jornal a inserir.</td>
+</tr>
+<tr>
+<td>corpo-jor</td>
+<td>string</td>
+<td>required</td>
+<td>Corpo da notícia.</td>
+</tr>
+<tr>
+<td>image</td>
+<td>image</td>
+<td>required</td>
+<td>Imagem para a notícia.</td>
+</tr>
+<tr>
+<td>jornal_id</td>
+<td>integer</td>
+<td>required</td>
+<td>ID de um dos jornais inseridos.</td>
+</tr>
+<tr>
+<td>seccao_id</td>
+<td>integer</td>
+<td>required</td>
+<td>ID de uma das secções inseridas.</td>
 </tr>
 </tbody>
 </table>
@@ -524,7 +552,7 @@ fetch(url, {
 </blockquote>
 <pre><code class="language-bash">curl -X GET -G "http://localhost/api/noticia/1" \
     -H "Content-Type: application/json" \
-    -d '{"id":16}'
+    -d '{"id":5}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/noticia/1");
 
@@ -534,7 +562,7 @@ let headers = {
 }
 
 let body = {
-    "id": 16
+    "id": 5
 }
 
 fetch(url, {
@@ -628,22 +656,49 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X DELETE "http://localhost/api/noticia/1" </code></pre>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/noticia/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":20}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/noticia/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 20
 }
 
 fetch(url, {
     method: "DELETE",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>DELETE api/noticia/{noticium}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>Enviar ID da notícia a eliminar.</td>
+</tr>
+</tbody>
+</table>
 <!-- END_7b913bb5385521eaf328d30e7c974d63 -->
 <h1>Secções</h1>
 <p>Métodos para gerir secções.</p>

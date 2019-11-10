@@ -26,8 +26,8 @@ class NoticiaUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo-not' => 'string|max:255',
-            'corpo-not' => 'string|max:400',
+            'titulo-not' => 'required|string|max:255',
+            'corpo-not' => 'required|string|max:400',
             'image' => 'image',
             'user_id' => 'exists:users,id',
             'jornal_id' => 'exists:jornals,id',
@@ -38,8 +38,10 @@ class NoticiaUpdateRequest extends FormRequest
     public function messages()
     {
         return [
+            'titulo-not.required' => 'É necessário escrever um título para a notícia.',
             'titulo-not.string' => 'O título tem de ser uma string.',
             'titulo-not.max:255' => 'O título só pode ter no máximo 255 caracteres.',
+            'corpo-not.required' => 'É necessário escrever corpo da notícia.',
             'corpo-not.string' => 'O corpo da notícias tem de ser uma string.',
             'corpo-not.max:400' => 'O corpo da notícias só pode ter no máximo 400 caracteres.',
             'image.image' => 'Insira uma formato válido: jpg, jpeg, png, ...',
@@ -49,7 +51,7 @@ class NoticiaUpdateRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -61,5 +63,5 @@ class NoticiaUpdateRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

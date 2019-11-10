@@ -31,18 +31,9 @@
                         <div class="form-group row">
                             <label for="noticia_id" class="col-md-4 col-form-label text-md-right">Notícia</label>
 
-                            <div class="col-md-6">
-                                <select name="noticia_id" class="form-control">
-                                    @foreach($noticias as $noticia)
-
-                                    @if ($feedback->{'noticia_id'} == $noticia->id)
-                                    <option value="{{ $noticia->id }}" selected="selected">{{ $noticia->{'titulo-not'} }}</option>
-                                    @else
-                                    <option value="{{ $noticia->id }}">{{ $noticia->{'titulo-not'} }}</option>
-                                    @endif
-
-                                    @endforeach
-                                </select>
+                            <div class="col-md-6 mb-0">
+                                <p class="pt-1 mb-0">{{ $feedback->noticia->{'titulo-not'} }}</p>
+                                <input type="text" class="invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ $feedback->noticia_id }}">
 
                                 @error('noticia_id')
                                 <span class="invalid-feedback" role="alert">
@@ -55,18 +46,9 @@
                         <div class="form-group row">
                             <label for="user_id" class="col-md-4 col-form-label text-md-right">Utilizador</label>
 
-                            <div class="col-md-6">
-                                <select name="user_id" class="form-control">
-                                    @foreach($users as $user)
-
-                                    @if ($feedback->{'user_id'} == $user->id)
-                                    <option value="{{ $user->id }}" selected="selected">{{ $user->name }}</option>
-                                    @else
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                    @endif
-
-                                    @endforeach
-                                </select>
+                            <div class="col-md-6 mb-0">
+                                <p class="pt-1 mb-0">{{ $feedback->user->name }}</p>
+                                <input type="text" class="invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ $feedback->user_id }}">
 
                                 @error('user_id')
                                 <span class="invalid-feedback" role="alert">

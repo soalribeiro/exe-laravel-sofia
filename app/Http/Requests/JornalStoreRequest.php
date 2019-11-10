@@ -48,7 +48,7 @@ class JornalStoreRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
             response()->json(
@@ -59,5 +59,5 @@ class JornalStoreRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

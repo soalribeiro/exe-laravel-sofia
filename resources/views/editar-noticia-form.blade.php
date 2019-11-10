@@ -60,7 +60,9 @@
 
                     <div class="col-md-6">
                         <select class="form-control" name="jornal_id">
-                            <option selected value="{{ $noticia->jornal_id }}"> {{ $noticia->jornal->{'titulo-jor'} }} </option>
+                            @foreach ($jornais as $jornal)
+                            <option value="{{ $noticia->jornal_id }}" {{ ($noticia->jornal_id == $jornal->id) ? 'selected="selected"' : '' }}> {{ $jornal->{'titulo-jor'} }} </option>
+                            @endforeach
                         </select>
 
                         @error('jornal_id')
@@ -76,7 +78,9 @@
 
                     <div class="col-md-6">
                         <select class="form-control" name="seccao_id">
-                            <option selected value="{{ $noticia->seccao_id }}"> {{ $noticia->seccao->{'titulo_sec'} }} </option>
+                            @foreach ($seccaos as $seccao)
+                            <option value="{{ $noticia->seccao_id }}" {{ ($noticia->seccao_id == $seccao->id) ? 'selected="selected"' : '' }}> {{ $seccao->{'titulo_sec'} }} </option>
+                            @endforeach
                         </select>
 
                         @error('seccao_id')

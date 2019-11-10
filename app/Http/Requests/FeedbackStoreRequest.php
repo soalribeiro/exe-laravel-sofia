@@ -44,7 +44,7 @@ class FeedbackStoreRequest extends FormRequest
         ];
     }
 
-    protected function failedValidation(Validator $validator)
+    /* protected function failedValidation(Validator $validator)
     {
 
         throw new HttpResponseException(
@@ -56,5 +56,5 @@ class FeedbackStoreRequest extends FormRequest
                 422
             )
         );
-    }
+    } */
 }

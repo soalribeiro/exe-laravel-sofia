@@ -8,7 +8,7 @@
             <h2 class="text-center py-4">Jornais publicados</h2>
 
             @auth
-            @if (Auth::user()->role->name === 'admin|editor')
+            @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
             <div class="row mb-5">
                 <a href="{{ route('inserir-jornal-form') }}">
                     <button type="button" class="btn btn-success">Inserir novo jornal</button>
