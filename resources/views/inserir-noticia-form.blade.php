@@ -52,30 +52,11 @@
                     @enderror
                 </div>
             </div>
-
-            <div class="form-group row">
-                <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
-
-                <div class="col-md-6">
-                    <select name="user_id">
-                        @foreach($users as $user)
-                        <option value="{{ $user->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $user->name }}</option>
-                        @endforeach
-                    </select>
-
-                    @error('user_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
-
             <div class="form-group row">
                 <label for="jornal_id" class="col-md-4 col-form-label text-md-right">Jornal</label>
 
                 <div class="col-md-6">
-                    <select name="jornal_id">
+                    <select name="jornal_id" class="form-control">
                         @foreach($jornais as $jornal)
                         <option value="{{ $jornal->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $jornal->{'titulo-jor'} }}</option>
                         @endforeach
@@ -93,7 +74,7 @@
                 <label for="seccao_id" class="col-md-4 col-form-label text-md-right">Secção</label>
 
                 <div class="col-md-6">
-                    <select name="seccao_id">
+                    <select name="seccao_id" class="form-control">
                         @foreach($seccaos as $seccao)
                         <option value="{{ $seccao->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $seccao->titulo_sec }}</option>
                         @endforeach
@@ -106,6 +87,21 @@
                     @enderror
                 </div>
             </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    @auth
+                    <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ Auth::user()->id }}">
+                    @endauth
+
+                    @error('user_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+
 
             <div class="form-group row mb-0 offset-md-4">
                 <div class="col-md-3">

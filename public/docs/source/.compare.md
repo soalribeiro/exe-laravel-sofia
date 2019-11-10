@@ -23,8 +23,9 @@ Welcome to the generated API reference.
 #Feedback
 
 
+Métodos para gerir feedbacks.
 <!-- START_baf680a48bc129f27432c80ec8921433 -->
-## Display a listing of the resource.
+## Mostrar os feedbacks.
 
 > Example request:
 
@@ -49,10 +50,12 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (401):
 
 ```json
-null
+{
+    "message": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -60,6 +63,227 @@ null
 
 
 <!-- END_baf680a48bc129f27432c80ec8921433 -->
+
+<!-- START_59de906289e81ee5c26947cc935e52a4 -->
+## Mostrar formulário para editar feedback selecionado.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/create" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/feedback/create`
+
+
+<!-- END_59de906289e81ee5c26947cc935e52a4 -->
+
+<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+## Store a newly created resource in storage.
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost/api/feedback" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/feedback`
+
+
+<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+
+<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
+## Display the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/feedback/{feedback}`
+
+
+<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
+
+<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
+## Show the form for editing the specified resource.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/1/edit" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (401):
+
+```json
+{
+    "message": "Unauthenticated."
+}
+```
+
+### HTTP Request
+`GET api/feedback/{feedback}/edit`
+
+
+<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
+
+<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
+## Update the specified resource in storage.
+
+> Example request:
+
+```bash
+curl -X PUT "http://localhost/api/feedback/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/feedback/{feedback}`
+
+`PATCH api/feedback/{feedback}`
+
+
+<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
+
+<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
+## Remove the specified resource from storage.
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost/api/feedback/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE api/feedback/{feedback}`
+
+
+<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
 
 #Jornais
 
@@ -91,10 +315,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (401):
 
 ```json
-null
+{
+    "message": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -129,11 +355,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (401):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -202,11 +428,11 @@ fetch(url, {
 ```
 
 
-> Example response (404):
+> Example response (401):
 
 ```json
 {
-    "message": "No query results for model [App\\Jornal] 1"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -242,11 +468,11 @@ fetch(url, {
 ```
 
 
-> Example response (404):
+> Example response (401):
 
 ```json
 {
-    "message": "No query results for model [App\\Jornal] 1"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -354,10 +580,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (401):
 
 ```json
-null
+{
+    "message": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -392,11 +620,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (401):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -412,20 +640,28 @@ fetch(url, {
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/noticia" 
+curl -X POST "http://localhost/api/noticia" \
+    -H "Content-Type: application/json" \
+    -d '{"titulo-jor":"rerum"}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/noticia");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "titulo-jor": "rerum"
 }
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -436,6 +672,11 @@ fetch(url, {
 ### HTTP Request
 `POST api/noticia`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    titulo-jor | string |  required  | Escolher um nome para o jornal a inserir.
 
 <!-- END_0762f61893b0e6cb43e2bbc304701edb -->
 
@@ -445,35 +686,50 @@ fetch(url, {
 > Example request:
 
 ```bash
-curl -X GET -G "http://localhost/api/noticia/1" 
+curl -X GET -G "http://localhost/api/noticia/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":16}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/noticia/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 16
 }
 
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
 ```
 
 
-> Example response (200):
+> Example response (401):
 
 ```json
-[]
+{
+    "message": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
 `GET api/noticia/{noticium}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | ID do jornal a editar
 
 <!-- END_8cc30809f2423150c9e8944ef3c84fe2 -->
 
@@ -503,11 +759,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (401):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -615,10 +871,12 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (401):
 
 ```json
-null
+{
+    "message": "Unauthenticated."
+}
 ```
 
 ### HTTP Request
@@ -653,11 +911,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (401):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -726,15 +984,11 @@ fetch(url, {
 ```
 
 
-> Example response (200):
+> Example response (401):
 
 ```json
 {
-    "id": 1,
-    "titulo_sec": "Política",
-    "created_at": "2019-11-06 21:20:57",
-    "updated_at": "2019-11-06 21:56:56",
-    "deleted_at": null
+    "message": "Unauthenticated."
 }
 ```
 
@@ -770,11 +1024,11 @@ fetch(url, {
 ```
 
 
-> Example response (500):
+> Example response (401):
 
 ```json
 {
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }
 ```
 
@@ -851,227 +1105,5 @@ fetch(url, {
 
 
 <!-- END_93f52473e766962fb6e3ef5b7362a130 -->
-
-#general
-
-
-<!-- START_59de906289e81ee5c26947cc935e52a4 -->
-## Show the form for creating a new resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/create" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/create");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/feedback/create`
-
-
-<!-- END_59de906289e81ee5c26947cc935e52a4 -->
-
-<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-## Store a newly created resource in storage.
-
-> Example request:
-
-```bash
-curl -X POST "http://localhost/api/feedback" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/feedback`
-
-
-<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-
-<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
-## Display the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/feedback/{feedback}`
-
-
-<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
-
-<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
-## Show the form for editing the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/1/edit" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1/edit");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response (500):
-
-```json
-{
-    "message": "Server Error"
-}
-```
-
-### HTTP Request
-`GET api/feedback/{feedback}/edit`
-
-
-<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
-
-<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
-## Update the specified resource in storage.
-
-> Example request:
-
-```bash
-curl -X PUT "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/feedback/{feedback}`
-
-`PATCH api/feedback/{feedback}`
-
-
-<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
-
-<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
-## Remove the specified resource from storage.
-
-> Example request:
-
-```bash
-curl -X DELETE "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/feedback/{feedback}`
-
-
-<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
 
 

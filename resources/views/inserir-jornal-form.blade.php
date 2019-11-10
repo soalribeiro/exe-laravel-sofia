@@ -54,14 +54,10 @@
             </div>
 
             <div class="form-group row">
-                <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
-
                 <div class="col-md-6">
-                    <select name="user_id">
-                        @foreach($users as $user)
-                        <option value="{{ $user->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $user->name }}</option>
-                        @endforeach
-                    </select>
+                    @auth
+                    <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ Auth::user()->id }}">
+                    @endauth
 
                     @error('user_id')
                     <span class="invalid-feedback" role="alert">

@@ -8,13 +8,11 @@
             <h2 class="text-center py-4">Notícias publicadas</h2>
 
             @auth
-            @if (Auth::user()->role->name === 'admin|editor')
             <div class="row mb-5">
                 <a href="{{ route('inserir-noticia-form') }}">
                     <button type="button" class="btn btn-success">Inserir nova notícia</button>
                 </a>
             </div>
-            @endif
             @endauth
 
             <div class="row">

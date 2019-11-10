@@ -59,9 +59,8 @@
                     <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
 
                     <div class="col-md-6">
-                        <select name="user_id">
-                            <option selected value="{{ $jornal->user_id }}"> {{ $jornal->user->name }} </option>
-                        </select>
+                        <p class="py-2">{{ $jornal->user->name }}</p>
+                        <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ $jornal->user_id }}">
 
                         @error('user_id')
                         <span class="invalid-feedback" role="alert">

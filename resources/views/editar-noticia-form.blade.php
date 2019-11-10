@@ -56,26 +56,10 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
-
-                    <div class="col-md-6">
-                        <select name="user_id">
-                            <option selected value="{{ $noticia->user_id }}"> {{ $noticia->user->name }} </option>
-                        </select>
-
-                        @error('user_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
                     <label for="jornal_id" class="col-md-4 col-form-label text-md-right">Jornal</label>
 
                     <div class="col-md-6">
-                        <select name="jornal_id">
+                        <select class="form-control" name="jornal_id">
                             <option selected value="{{ $noticia->jornal_id }}"> {{ $noticia->jornal->{'titulo-jor'} }} </option>
                         </select>
 
@@ -91,11 +75,26 @@
                     <label for="seccao_id" class="col-md-4 col-form-label text-md-right">Secção</label>
 
                     <div class="col-md-6">
-                        <select name="seccao_id">
+                        <select class="form-control" name="seccao_id">
                             <option selected value="{{ $noticia->seccao_id }}"> {{ $noticia->seccao->{'titulo_sec'} }} </option>
                         </select>
 
                         @error('seccao_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
+
+                    <div class="col-md-6">
+                        <p class="py-2">{{ $noticia->user->name }}</p>
+                        <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ $noticia->user_id }}">
+
+                        @error('user_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

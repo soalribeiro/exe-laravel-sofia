@@ -7,15 +7,19 @@
 
             <h2 class="text-center py-4">Jornais publicados</h2>
 
+            @auth
+            @if (Auth::user()->role->name === 'admin|editor')
             <div class="row mb-5">
                 <a href="{{ route('inserir-jornal-form') }}">
                     <button type="button" class="btn btn-success">Inserir novo jornal</button>
                 </a>
             </div>
+            @endif
+            @endauth
 
             <div class="row">
                 @foreach($jornals as $jornal)
-                <div class="card mr-2 col-sm" style="width: 18rem;">
+                <div class="card mx-2 mb-2" style="width: 18rem;">
                     <img src="/uploads/{{ $jornal->image }}" class="card-img-top">
                     <div class="card-body">
                         <h4 class="card-title text-center">{{ $jornal->{'titulo-jor'} }}</h4>
@@ -29,6 +33,8 @@
                             <a href="{{ route('lista-noticias-jornal', $jornal->id) }}" class="btn btn-primary">Ler notícias</a>
                         </div>
 
+                        @auth
+                        @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
                         <div class="col-md-8 text-center mx-auto my-1">
                             <a href="{{ route('editar-jornal-form', $jornal->id) }}" class="btn btn-outline-primary btn-sm ">Editar jornal</a>
                         </div>
@@ -36,6 +42,8 @@
                         <div class="col-md-9 text-center mx-auto mt-4">
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarJornal{{ $jornal->id }}">Apagar jornal</button>
                         </div>
+                        @endif
+                        @endauth
 
                     </div>
                 </div>

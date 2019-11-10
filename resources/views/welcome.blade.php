@@ -14,7 +14,7 @@
     <style>
         html,
         body {
-            background-color: #fff;
+            background-color: #ffb92d;
             color: #636b6f;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
@@ -44,14 +44,17 @@
 
         .content {
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            padding: 50px;
         }
 
         .title {
             font-size: 84px;
+            color: #3d3d3d;
         }
 
         .links>a {
-            color: #636b6f;
+            color: #3d3d3d;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
@@ -89,9 +92,18 @@
 
             <div class="links">
                 <a href="{{ route('lista-jornais') }}">Jornais</a>
+
+                @auth
                 <a href="{{ route('lista-seccaos') }}">Secções</a>
+                @endauth
+
                 <a href="{{ route('lista-noticias') }}">Notícias</a>
+
+                @auth
                 <a href="{{ route('lista-feedbacks') }}">Feedbacks</a>
+                @endauth
+
+                <a href="{{ route('docs') }}">Documentação</a>
             </div>
         </div>
     </div>

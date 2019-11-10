@@ -28,7 +28,8 @@ class FeedbackController extends Controller
     public function index()
     {
         $feedbacks = Feedback::with('user')
-            ->with('noticia')->get();
+            ->with('noticia')->get()
+            ->reverse();
 
         $response = [
             'data' => $feedbacks,
@@ -51,8 +52,8 @@ class FeedbackController extends Controller
         $noticias = Noticia::all();
 
         return view('inserir-feedback-form')
-        ->with('noticias', $noticias)
-        ->with('users', $users);
+            ->with('noticias', $noticias)
+            ->with('users', $users);
     }
 
     /**

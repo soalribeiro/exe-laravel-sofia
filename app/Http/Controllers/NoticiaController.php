@@ -48,27 +48,22 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         $users = User::all();
         $jornais = Jornal::all();
         $seccaos = Seccao::all();
 
-        $user = $request->user()->role->name;
-        //return $user;
-        if ($user === "reporter") {
-            abort(401);
-        } else {
-            return view('inserir-noticia-form')
-                ->with('users', $users)
-                ->with('jornais', $jornais)
-                ->with('seccaos', $seccaos);
-        }
+        return view('inserir-noticia-form')
+            ->with('users', $users)
+            ->with('jornais', $jornais)
+            ->with('seccaos', $seccaos);
     }
 
     /**
      * Criar nova notícia.
      *
+     * @bodyParam  titulo-jor string required Escolher um nome para o jornal a inserir.
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -93,6 +88,8 @@ class NoticiaController extends Controller
 
     /**
      * Mostrar notícia em específico.
+     * 
+     * @bodyParam  id int required ID do jornal a editar
      *
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response
@@ -129,29 +126,16 @@ class NoticiaController extends Controller
             $file = $request->file('image')->store('images');
             $data['image'] = $file;
 
-            $noticium->update(array(
-                'titulo-not' => $data['titulo-not'],
-                'corpo-not' => $data['corpo-not'],
-                'image' => $data['image'],
-                'user_id' => $data['user_id'],
-                'jornal_id' => $data['jornal_id'],
-                'seccao_id' => $data['seccao_id']
-            ));
+            $noticium->update($data);
         } else {
-            $noticium->update(array(
+            $noticium->update([
                 'titulo-jor' => $data['titulo-not'],
                 'corpo-jor' => $data['corpo-not'],
-                'user_id' => $data['user_id'],
                 'jornal_id' => $data['jornal_id'],
-                'seccao_id' => $data['seccao_id']
-            ));
+                'seccao_id' => $data['seccao_id'],
+                'user_id' => $data['user_id']
+            ]);
         }
-
-        $response = [
-            'data' => $noticium,
-            'message' => 'Notícia editada.',
-            'result' => 'OK'
-        ];
 
         return redirect()->route('lista-noticias');
     }

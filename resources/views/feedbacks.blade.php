@@ -7,11 +7,15 @@
 
             <h2 class="text-center py-4">Feedbacks escritos</h2>
 
+            @auth
+            @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
             <div class="row mb-5">
                 <a href="{{ route('inserir-feedback-form') }}">
-                    <button type="button" class="btn btn-success">Inserir novo feedback</button>
+                        <button type="button" class="btn btn-success">Inserir novo feedback</button>
                 </a>
             </div>
+            @endif
+            @endauth
 
             <div class="row">
                 @foreach($feedbacks as $feedback)

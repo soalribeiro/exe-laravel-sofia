@@ -49,8 +49,9 @@
 <a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>Feedback</h1>
+<p>Métodos para gerir feedbacks.</p>
 <!-- START_baf680a48bc129f27432c80ec8921433 -->
-<h2>Display a listing of the resource.</h2>
+<h2>Mostrar os feedbacks.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -69,12 +70,165 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response:</p>
+<p>Example response (401):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/feedback</code></p>
 <!-- END_baf680a48bc129f27432c80ec8921433 -->
+<!-- START_59de906289e81ee5c26947cc935e52a4 -->
+<h2>Mostrar formulário para editar feedback selecionado.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/create" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/feedback/create</code></p>
+<!-- END_59de906289e81ee5c26947cc935e52a4 -->
+<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/feedback" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/feedback</code></p>
+<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
+<h2>Display the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/feedback/{feedback}</code></p>
+<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
+<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
+<h2>Show the form for editing the specified resource.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/1/edit" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (401):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/feedback/{feedback}/edit</code></p>
+<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
+<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/feedback/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/feedback/{feedback}</code></p>
+<p><code>PATCH api/feedback/{feedback}</code></p>
+<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
+<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
+<h2>Remove the specified resource from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/feedback/1" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/feedback/{feedback}</code></p>
+<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
 <h1>Jornais</h1>
 <p>Métodos para gerir jornais.</p>
 <!-- START_d984a021fe81033b627b61ae0096b7e7 -->
@@ -97,9 +251,11 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (401):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal</code></p>
 <!-- END_d984a021fe81033b627b61ae0096b7e7 -->
@@ -123,10 +279,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (500):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal/create</code></p>
@@ -173,10 +329,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "No query results for model [App\\Jornal] 1"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal/{jornal}</code></p>
@@ -201,10 +357,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (404):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "No query results for model [App\\Jornal] 1"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/jornal/{jornal}/edit</code></p>
@@ -276,9 +432,11 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (401):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia</code></p>
 <!-- END_3e0792dacbd9e7d214dcc50f52939226 -->
@@ -302,10 +460,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (500):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/create</code></p>
@@ -315,48 +473,104 @@ fetch(url, {
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/noticia" </code></pre>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/noticia" \
+    -H "Content-Type: application/json" \
+    -d '{"titulo-jor":"rerum"}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/noticia");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "titulo-jor": "rerum"
 }
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <h3>HTTP Request</h3>
 <p><code>POST api/noticia</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>titulo-jor</td>
+<td>string</td>
+<td>required</td>
+<td>Escolher um nome para o jornal a inserir.</td>
+</tr>
+</tbody>
+</table>
 <!-- END_0762f61893b0e6cb43e2bbc304701edb -->
 <!-- START_8cc30809f2423150c9e8944ef3c84fe2 -->
 <h2>Mostrar notícia em específico.</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
-<pre><code class="language-bash">curl -X GET -G "http://localhost/api/noticia/1" </code></pre>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/noticia/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":16}'
+</code></pre>
 <pre><code class="language-javascript">const url = new URL("http://localhost/api/noticia/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 16
 }
 
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (401):</p>
 </blockquote>
-<pre><code class="language-json">[]</code></pre>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/{noticium}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>ID do jornal a editar</td>
+</tr>
+</tbody>
+</table>
 <!-- END_8cc30809f2423150c9e8944ef3c84fe2 -->
 <!-- START_e2b64a92180d97911f45a4e151785890 -->
 <h2>Mostrar formulário para editar notícia específica.</h2>
@@ -378,10 +592,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (500):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/noticia/{noticium}/edit</code></p>
@@ -453,9 +667,11 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (401):</p>
 </blockquote>
-<pre><code class="language-json">null</code></pre>
+<pre><code class="language-json">{
+    "message": "Unauthenticated."
+}</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/seccao</code></p>
 <!-- END_030396ffd2b4f1352cc510e7450ccc38 -->
@@ -479,10 +695,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (500):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/seccao/create</code></p>
@@ -529,14 +745,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (200):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "id": 1,
-    "titulo_sec": "Política",
-    "created_at": "2019-11-06 21:20:57",
-    "updated_at": "2019-11-06 21:56:56",
-    "deleted_at": null
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/seccao/{seccao}</code></p>
@@ -561,10 +773,10 @@ fetch(url, {
     .then(response =&gt; response.json())
     .then(json =&gt; console.log(json));</code></pre>
 <blockquote>
-<p>Example response (500):</p>
+<p>Example response (401):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "message": "Server Error"
+    "message": "Unauthenticated."
 }</code></pre>
 <h3>HTTP Request</h3>
 <p><code>GET api/seccao/{seccao}/edit</code></p>
@@ -614,156 +826,6 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/seccao/{seccao}</code></p>
 <!-- END_93f52473e766962fb6e3ef5b7362a130 -->
-<h1>general</h1>
-<!-- START_59de906289e81ee5c26947cc935e52a4 -->
-<h2>Show the form for creating a new resource.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/create" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/create");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response:</p>
-</blockquote>
-<pre><code class="language-json">null</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/feedback/create</code></p>
-<!-- END_59de906289e81ee5c26947cc935e52a4 -->
-<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-<h2>Store a newly created resource in storage.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X POST "http://localhost/api/feedback" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>POST api/feedback</code></p>
-<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
-<h2>Display the specified resource.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/1" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (500):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "message": "Server Error"
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/feedback/{feedback}</code></p>
-<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
-<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
-<h2>Show the form for editing the specified resource.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X GET -G "http://localhost/api/feedback/1/edit" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1/edit");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<blockquote>
-<p>Example response (500):</p>
-</blockquote>
-<pre><code class="language-json">{
-    "message": "Server Error"
-}</code></pre>
-<h3>HTTP Request</h3>
-<p><code>GET api/feedback/{feedback}/edit</code></p>
-<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
-<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
-<h2>Update the specified resource in storage.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X PUT "http://localhost/api/feedback/1" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>PUT api/feedback/{feedback}</code></p>
-<p><code>PATCH api/feedback/{feedback}</code></p>
-<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
-<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
-<h2>Remove the specified resource from storage.</h2>
-<blockquote>
-<p>Example request:</p>
-</blockquote>
-<pre><code class="language-bash">curl -X DELETE "http://localhost/api/feedback/1" </code></pre>
-<pre><code class="language-javascript">const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response =&gt; response.json())
-    .then(json =&gt; console.log(json));</code></pre>
-<h3>HTTP Request</h3>
-<p><code>DELETE api/feedback/{feedback}</code></p>
-<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">

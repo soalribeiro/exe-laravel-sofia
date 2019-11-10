@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Jornal;
 use App\User;
+use App\Jornal;
+use Illuminate\Http\Request;
 use App\Http\Requests\JornalStoreRequest;
 use App\Http\Requests\JornalUpdateRequest;
 
@@ -40,12 +41,18 @@ class JornalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $users = User::all();
 
-        return view('inserir-jornal-form')
-            ->with('users', $users);
+        $user = $request->user()->role->name;
+
+        if ($user === "reporter") {
+            abort(401);
+        } else {
+            return view('inserir-jornal-form')
+                ->with('users', $users);
+        }
     }
 
     /**
@@ -63,12 +70,6 @@ class JornalController extends Controller
         $data['image'] = $file;
 
         $jornals = Jornal::create($data);
-
-        $response = [
-            'data' => $jornals,
-            'message' => 'Jornal criado',
-            'result' => 'OK'
-        ];
 
         return redirect()->route('lista-jornais');
     }
@@ -90,10 +91,16 @@ class JornalController extends Controller
      * @param  \App\Jornal  $jornal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Jornal $jornal)
+    public function edit(Jornal $jornal, Request $request)
     {
-        return view('editar-jornal-form')
-            ->with('jornal', $jornal);
+        $user = $request->user()->role->name;
+
+        if ($user === "reporter") {
+            abort(401);
+        } else {
+            return view('editar-jornal-form')
+                ->with('jornal', $jornal);
+        }
     }
 
     /**
@@ -125,13 +132,6 @@ class JornalController extends Controller
             ));
         }
 
-        $response = [
-            'data' => $jornal,
-            'message' => 'Jornal editado',
-            'result' => 'OK'
-        ];
-
-        //return response($response, 200);
         return redirect()->route('lista-jornais');
     }
 
