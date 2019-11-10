@@ -642,7 +642,7 @@ fetch(url, {
 ```bash
 curl -X POST "http://localhost/api/noticia" \
     -H "Content-Type: application/json" \
-    -d '{"titulo-jor":"odit","corpo-jor":"et","image":"ullam","jornal_id":1,"seccao_id":19}'
+    -d '{"titulo-jor":"molestiae","corpo-jor":"ab","image":"fuga","jornal_id":4,"seccao_id":10}'
 
 ```
 
@@ -655,11 +655,11 @@ let headers = {
 }
 
 let body = {
-    "titulo-jor": "odit",
-    "corpo-jor": "et",
-    "image": "ullam",
-    "jornal_id": 1,
-    "seccao_id": 19
+    "titulo-jor": "molestiae",
+    "corpo-jor": "ab",
+    "image": "fuga",
+    "jornal_id": 4,
+    "seccao_id": 10
 }
 
 fetch(url, {
@@ -696,7 +696,7 @@ Parameter | Type | Status | Description
 ```bash
 curl -X GET -G "http://localhost/api/noticia/1" \
     -H "Content-Type: application/json" \
-    -d '{"id":5}'
+    -d '{"id":19}'
 
 ```
 
@@ -709,7 +709,7 @@ let headers = {
 }
 
 let body = {
-    "id": 5
+    "id": 19
 }
 
 fetch(url, {
@@ -824,7 +824,7 @@ fetch(url, {
 ```bash
 curl -X DELETE "http://localhost/api/noticia/1" \
     -H "Content-Type: application/json" \
-    -d '{"id":20}'
+    -d '{"id":4}'
 
 ```
 
@@ -837,7 +837,7 @@ let headers = {
 }
 
 let body = {
-    "id": 20
+    "id": 4
 }
 
 fetch(url, {
