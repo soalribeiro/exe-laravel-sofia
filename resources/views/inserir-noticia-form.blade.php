@@ -89,6 +89,24 @@
             </div>
 
             <div class="form-group row">
+                <label for="tipo_id" class="col-md-4 col-form-label text-md-right">Tipo</label>
+
+                <div class="col-md-6">
+                    <select name="tipo_id" class="form-control">
+                        @foreach($tipos as $tipo)
+                        <option value="{{ $tipo->id }}" {{ $loop->first ? 'selected="selected"' : '' }}>{{ $tipo->nome_tipo }}</option>
+                        @endforeach
+                    </select>
+
+                    @error('tipo_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col-md-6">
                     @auth
                     <input type="text" class="form-control invisible @error('user_id') is-invalid @enderror" name="user_id" value="{{ Auth::user()->id }}">

@@ -45,6 +45,16 @@
 
             <h2 class="text-center py-4">Este jornal ainda não tem notícias.</h2>
 
+            @auth
+            <div class="row mx-auto">
+                <div class="col text-center">
+                    <a href="{{ route('inserir-noticia-form') }}">
+                        <button type="button" class="btn btn-success">Inserir nova notícia</button>
+                    </a>
+                </div>
+            </div>
+            @endauth
+
             @endif
 
         </div>

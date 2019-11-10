@@ -15,7 +15,8 @@ class Noticia extends Model
         'image',
         'user_id',
         'jornal_id',
-        'seccao_id'
+        'seccao_id',
+        'tipo_id'
     ];
 
     public function user()
@@ -31,5 +32,10 @@ class Noticia extends Model
     public function seccao()
     {
         return $this->belongsTo('App\Seccao', 'seccao_id');
+    }
+
+    public function tipo()
+    {
+        return $this->belongsTo('App\Tipo', 'tipo_id');
     }
 }

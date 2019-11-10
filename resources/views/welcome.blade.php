@@ -101,6 +101,7 @@
 
                 @auth
                 <a href="{{ route('lista-feedbacks') }}">Feedbacks</a>
+                <a href="{{ route('lista-tipos') }}">Tipos de notícia</a>
                 @endauth
 
                 <a href="{{ route('docs') }}">Documentação</a>

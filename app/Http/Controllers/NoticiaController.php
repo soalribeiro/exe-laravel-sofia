@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tipo;
 use App\User;
 use App\Jornal;
 use App\Seccao;
@@ -30,6 +31,7 @@ class NoticiaController extends Controller
 
         $noticias = Noticia::with('user')
             ->with('jornal')
+            ->with('tipo')
             ->with('seccao')->get();
 
         return view('noticias')
@@ -46,11 +48,13 @@ class NoticiaController extends Controller
         $users = User::all();
         $jornais = Jornal::all();
         $seccaos = Seccao::all();
+        $tipos = Tipo::all();
 
         return view('inserir-noticia-form')
             ->with('users', $users)
             ->with('jornais', $jornais)
-            ->with('seccaos', $seccaos);
+            ->with('seccaos', $seccaos)
+            ->with('tipos', $tipos);
     }
 
     /**
@@ -74,12 +78,6 @@ class NoticiaController extends Controller
         $data['image'] = $file;
 
         $noticias = Noticia::create($data);
-
-        $response = [
-            'data' => $noticias,
-            'message' => 'Notícia criada.',
-            'result' => 'OK'
-        ];
 
         return redirect()->route('lista-noticias');
     }
@@ -107,10 +105,12 @@ class NoticiaController extends Controller
     {
         $seccaos = Seccao::all();
         $jornais = Jornal::all();
+        $tipos = Tipo::all();
 
         return view('editar-noticia-form')
             ->with('seccaos', $seccaos)
             ->with('jornais', $jornais)
+            ->with('tipos', $tipos)
             ->with('noticia', $noticium);
     }
 
@@ -136,7 +136,8 @@ class NoticiaController extends Controller
                 'corpo-not' => $data['corpo-not'],
                 'jornal_id' => $data['jornal_id'],
                 'seccao_id' => $data['seccao_id'],
-                'user_id' => $data['user_id']
+                'user_id' => $data['user_id'],
+                'tipo_id' => $data['tipo_id']
             ));
         }
 
@@ -170,11 +171,11 @@ class NoticiaController extends Controller
             ->with('seccao')
             ->where('jornal_id', $jornal->id)->get();
 
-        $response = [
+        /*  $response = [
             'data' => $noticias,
             'message' => 'Listagem de notícias do jornal' . $jornal,
             'result' => 'OK'
-        ];
+        ]; */
 
         return view('lista-noticias-jornal')
             ->with('noticias', $noticias);

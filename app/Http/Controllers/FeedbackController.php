@@ -57,7 +57,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Inserir um novo feedback.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -78,7 +78,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar um determinado feedback.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
@@ -89,7 +89,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulário para editar feedback.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
@@ -106,7 +106,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Editar um feedback específico.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Feedback  $feedback
@@ -122,7 +122,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remover um feedback.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
@@ -135,7 +135,7 @@ class FeedbackController extends Controller
     }
 
     /**
-     * Enviar feedback da notícia clicada.
+     * Mostrar formulário para enviar feedback da notícia clicada.
      *
      * @param  \App\Feedback  $feedback
      * @param  \App\Noticia  $noticium
@@ -149,6 +149,12 @@ class FeedbackController extends Controller
             ->with('users', $users);
     }
 
+    /**
+     * Enviar feedback da notícia clicada.
+     *
+     * @param  \App\Feedback  $feedback
+     * @param  \App\Noticia  $noticium
+     */
     public function inserirfbnot(FeedbackNotStoreRequest $request)
     {
 

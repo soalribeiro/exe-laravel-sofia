@@ -24,6 +24,8 @@ class CreateNoticiasTable extends Migration
             $table->foreign('jornal_id')->references('id')->on('jornals');
             $table->bigInteger('seccao_id')->unsigned();
             $table->foreign('seccao_id')->references('id')->on('seccaos');
+            $table->bigInteger('tipo_id')->unsigned();
+            $table->foreign('tipo_id')->references('id')->on('tipos');
             $table->timestamps();
         });
     }

@@ -24,6 +24,9 @@
                     <div class="card-body">
                         <p class="card-text text-right"><strong>{{ $noticia->seccao->titulo_sec }} </strong></p>
 
+                        <p class="card-text small" style="color: grey;">{{ $noticia->tipo->nome_tipo }}</p>
+
+
                         <h4 class="card-title">{{ $noticia->{'titulo-not'} }}</h4>
 
                         <p class="card-text">{{ $noticia->{'corpo-not'} }}</p>

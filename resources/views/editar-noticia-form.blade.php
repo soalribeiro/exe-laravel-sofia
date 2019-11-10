@@ -91,6 +91,24 @@
                     </div>
                 </div>
 
+<div class="form-group row">
+    <label for="tipo_id" class="col-md-4 col-form-label text-md-right">Tipo</label>
+
+    <div class="col-md-6">
+        <select class="form-control" name="tipo_id">
+            @foreach ($tipos as $tipo)
+            <option value="{{ $noticia->tipo_id }}" {{ ($noticia->tipo_id == $tipo->id) ? 'selected="selected"' : '' }}> {{ $tipo->nome_tipo }} </option>
+            @endforeach
+        </select>
+
+        @error('tipo_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+        @enderror
+    </div>
+</div>
+
                 <div class="form-group row">
                     <label for="user_id" class="col-md-4 col-form-label text-md-right">Jornalista</label>
 

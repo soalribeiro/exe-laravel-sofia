@@ -26,12 +26,6 @@ class JornalController extends Controller
     {
         $jornals = Jornal::with('user')->get();
 
-        $response = [
-            'data' => $jornals,
-            'message' => 'Listagem de jornais',
-            'result' => 'OK'
-        ];
-
         return view('jornais')
             ->with('jornals', $jornals);
     }

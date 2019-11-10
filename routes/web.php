@@ -78,6 +78,21 @@ Route::group(
 
         /* eliminar feedback */
         Route::delete('/elimina-feedback/{feedback}', 'FeedbackController@destroy')->name('eliminar-feedback');
+     
+
+        /* mostrar tipos */
+        Route::get('/tipos', 'TipoController@index')->name('lista-tipos');
+
+        /* inserir tipos */
+        Route::get('/inserir-tipo', 'TipoController@create')->name('inserir-tipo-form');
+        Route::post('/inserir-tipo', 'TipoController@store')->name('inserir-tipo');
+
+        /* editar tipos */
+        Route::get('/editar-tipo/{tipo}', 'TipoController@edit')->name('editar-tipo-form');
+        Route::put('/editar-tipo/{tipo}/edit', 'TipoController@update')->name('editar-tipo');
+
+        /* eliminar tipo */
+        Route::delete('/elimina-tipo/{tipo}', 'TipoController@destroy')->name('eliminar-tipo');
     }
 );
 
