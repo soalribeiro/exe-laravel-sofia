@@ -49,8 +49,8 @@ Route::get('/noticias', 'NoticiaController@index')->name('lista-noticias');
 Route::get('/lista-noticias-jornal/{jornal}', 'NoticiaController@listnotijor')->name('lista-noticias-jornal');
 
 /* inserir notícias */
-Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
-Route::post('/inserir-noticia', 'NoticiaController@store')->name('inserir-noticia');
+/* Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
+Route::post('/inserir-noticia', 'NoticiaController@store')->name('inserir-noticia'); */
 
 /* editar notícias */
 Route::get('/editar-noticia/{noticium}', 'NoticiaController@edit')->name('editar-noticia-form');
@@ -103,5 +103,18 @@ Route::group(
         Route::get('/', 'DashboardController@index')->name('admin');
 
         Route::resource('user', 'UserController');
+    }
+);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(
+    ['middleware' => ['auth', 'role:editor|admin']],
+    function () {
+        Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
+        Route::post('/inserir-noticia', 'NoticiaController@store')->name('inserir-noticia');
     }
 );

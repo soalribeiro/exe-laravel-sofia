@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\NoticiaStoreRequest;
-use App\Http\Requests\NoticiaUpdateRequest;
-use App\Noticia;
+use App\User;
 use App\Jornal;
 use App\Seccao;
-use App\User;
+use App\Noticia;
+use Illuminate\Http\Request;
+use App\Http\Requests\NoticiaStoreRequest;
+use App\Http\Requests\NoticiaUpdateRequest;
 
 /**
  * @group Notícias
@@ -23,8 +24,10 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $user = $request->user();
+
         $noticias = Noticia::with('user')
             ->with('jornal')
             ->with('seccao')->get();
@@ -32,7 +35,8 @@ class NoticiaController extends Controller
         $response = [
             'data' => $noticias,
             'message' => 'Listagem de notícias',
-            'result' => 'OK'
+            'result' => 'OK',
+            'user' => $user
         ];
 
         return view('noticias')
@@ -44,16 +48,22 @@ class NoticiaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $users = User::all();
         $jornais = Jornal::all();
         $seccaos = Seccao::all();
 
-        return view('inserir-noticia-form')
-            ->with('users', $users)
-            ->with('jornais', $jornais)
-            ->with('seccaos', $seccaos);
+        $user = $request->user()->role->name;
+        //return $user;
+        if ($user === "reporter") {
+            abort(401);
+        } else {
+            return view('inserir-noticia-form')
+                ->with('users', $users)
+                ->with('jornais', $jornais)
+                ->with('seccaos', $seccaos);
+        }
     }
 
     /**

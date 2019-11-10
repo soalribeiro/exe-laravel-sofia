@@ -6,10 +6,11 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable, SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -58,7 +59,7 @@ class User extends Authenticatable
     {
         $userRole = auth()->user()->role->name;
 
-        if(in_array($userRole, $roles))
+        if (in_array($userRole, $roles))
             return true;
 
         return false;

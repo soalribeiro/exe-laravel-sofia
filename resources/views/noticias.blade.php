@@ -7,16 +7,20 @@
 
             <h2 class="text-center py-4">Notícias publicadas</h2>
 
+            @auth
+            @if (Auth::user()->role->name === 'admin|editor')
             <div class="row mb-5">
                 <a href="{{ route('inserir-noticia-form') }}">
                     <button type="button" class="btn btn-success">Inserir nova notícia</button>
                 </a>
             </div>
+            @endif
+            @endauth
 
             <div class="row">
                 @foreach($noticias as $noticia)
 
-                <div class="card mx-2" style="width: 18rem;">
+                <div class="card mx-2 mb-2" style="width: 18rem;">
 
                     <img src="/uploads/{{ $noticia->image }}" class="card-img-top">
                     <div class="card-body">
@@ -30,19 +34,23 @@
 
                         <p class="blockquote-footer text-right"><cite title="Source Title">{{ $noticia->user->name }}</cite></p>
 
+                        @auth
+                        @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
                         <div class="row">
                             <div class="col-md-8">
                                 <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-outline-primary">Editar notícia</a>
                             </div>
                         </div>
 
-                        <div class="col-md-9 text-center mx-auto mt-4">
+                        <div class="col-md-12 text-right pr-0 mt-4">
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarNot{{ $noticia->id }}">Apagar notícia</button>
                         </div>
 
-                        <div class="col-md-9 text-center mx-auto mt-1">
+                        <div class="col-md-12 text-right pr-0 mt-1">
                             <a href="{{ route('lista-fb-noticia', $noticia->id) }}" class="btn btn-success btn-sm">Enviar feedback</a>
                         </div>
+                        @endif
+                        @endauth
                     </div>
                 </div>
 

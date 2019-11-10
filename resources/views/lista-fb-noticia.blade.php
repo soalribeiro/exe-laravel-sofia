@@ -68,10 +68,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="noticia_id" class="col-md-4 col-form-label text-md-right">Notícia</label>
+                            
 
                             <div class="col-md-6">
-                                <input name="noticia_id" class="form-control @error('noticia_id') is-invalid @enderror" id="disabledInput" type="text" value="{{ $noticia->id }}" readonly>
+                                <input name="noticia_id" class="invisible form-control @error('noticia_id') is-invalid @enderror" id="disabledInput" type="text" value="{{ $noticia->id }}">
 
                                 @error('noticia_id')
                                 <span class="invalid-feedback" role="alert">
