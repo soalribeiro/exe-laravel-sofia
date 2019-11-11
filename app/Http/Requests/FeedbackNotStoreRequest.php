@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FeedbackNotStoreRequest extends FormRequest
 {
@@ -42,17 +40,4 @@ class FeedbackNotStoreRequest extends FormRequest
             'user_id.exists' => 'O utilizador que escolheu não existe.'
         ];
     }
-
-    /* protected function failedValidation(Validator $validator)
-    {
-        throw new HttpResponseException(
-            response()->json(
-                [
-                    'data' => $validator->errors(),
-                    'msg' => 'Erro, tente de novo.'
-                ],
-                422
-            )
-        );
-    } */
 }

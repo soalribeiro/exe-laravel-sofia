@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
-class NoticiaStoreRequest extends FormRequest
+class NoticiaApiStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +31,7 @@ class NoticiaStoreRequest extends FormRequest
             'image' => 'required|image',
             'user_id' => 'required|exists:users,id',
             'jornal_id' => 'required|exists:jornals,id',
-            'seccao_id' => 'required|exists:seccaos,id',
-            'tipo_id' => 'required|exists:tipos,id',
+            'seccao_id' => 'required|exists:seccaos,id'
         ];
     }
 
@@ -50,9 +51,20 @@ class NoticiaStoreRequest extends FormRequest
             'jornal_id.required' => 'É necessário selecionar um jornal.',
             'jornal_id.exists' => 'O jornal que escolheu não existe.',
             'seccao_id.required' => 'É necessário selecionar uma secção.',
-            'seccao_id.exists' => 'A secção que escolheu não existe.',
-            'tipo_id.required' => 'É necessário selecionar um tipo.',
-            'tipo_id.exists' => 'O tipo que escolheu não existe.'
+            'seccao_id.exists' => 'O utilizador que escolheu não existe.'
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(
+            response()->json(
+                [
+                    'data' => $validator->errors(),
+                    'msg' => 'Erro, tente de novo.'
+                ],
+                422
+            )
+        );
     }
 }

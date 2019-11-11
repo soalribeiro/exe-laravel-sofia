@@ -26,7 +26,7 @@ class JornalUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'titulo-jor' => 'required|string|max:255',
+            'titulo-jor' => 'required|unique:jornals|string|max:255',
             'descricao-jor' => 'required|string|max:400',
             'image' => 'image',
             'user_id' => 'exists:users,id'
@@ -38,7 +38,8 @@ class JornalUpdateRequest extends FormRequest
         return [
             'titulo-jor.required' => 'É necessário escrever um título.',
             'titulo-jor.string' => 'O título tem de ser uma string.',
-            'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',            
+            'titulo-jor.max:255' => 'O título só pode ter no máximo 255 caracteres.',
+            'titulo-jor.unique' => 'Esse jornal já existe, escolha outro nome.',          
             'descricao-jor.required' => 'É necessário escrever uma descrição',
             'descricao-jor.string' => 'A descrição tem de ser uma string.',
             'descricao-jor.max:400' => 'A descrição só pode ter no máximo 400 caracteres.',

@@ -11,20 +11,10 @@ use Illuminate\Http\Request;
 use App\Http\Requests\NoticiaStoreRequest;
 use App\Http\Requests\NoticiaUpdateRequest;
 
-/**
- * @group Notícias
- * 
- * Métodos para gerir notícias.
- */
 
 class NoticiaController extends Controller
 {
-    /**
-     * 
-     * Apresentar todas as notícias.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
         $user = $request->user();
@@ -38,11 +28,7 @@ class NoticiaController extends Controller
             ->with('noticias', $noticias);
     }
 
-    /**
-     * Mostrar formulário para criar nova notícia.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $users = User::all();
@@ -57,18 +43,7 @@ class NoticiaController extends Controller
             ->with('tipos', $tipos);
     }
 
-    /**
-     * Criar nova notícia.
-     *
-     * @bodyParam  titulo-jor string required Nome para o jornal a inserir.
-     * @bodyParam  corpo-jor string required Corpo da notícia.
-     * @bodyParam  image image required Imagem para a notícia.
-     * @bodyParam  jornal_id int required ID de um dos jornais inseridos.
-     * @bodyParam  seccao_id int required ID de uma das secções inseridas.
-     * 
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(NoticiaStoreRequest $request)
     {
         $data = $request->all();
@@ -82,25 +57,13 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    /**
-     * Mostrar notícia em específico.
-     * 
-     * @bodyParam  id int required ID do jornal a editar
-     *
-     * @param  \App\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show(Noticia $noticia)
     {
         return $noticia;
     }
 
-    /**
-     * Mostrar formulário para editar notícia específica.
-     *
-     * @param  \App\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Noticia $noticium)
     {
         $seccaos = Seccao::all();
@@ -114,13 +77,7 @@ class NoticiaController extends Controller
             ->with('noticia', $noticium);
     }
 
-    /**
-     * Editar notícia específica.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(NoticiaUpdateRequest $request, Noticia $noticium)
     {
         $data = $request->all();
@@ -144,14 +101,7 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    /**
-     * Apagar notícia específica.
-     * 
-     * @bodyParam id int required Enviar ID da notícia a eliminar.
-     *
-     * @param  \App\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy(Noticia $noticium)
     {
         $noticium->delete();
@@ -159,23 +109,13 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    /**
-     * Mostrar notícias do jornal selecionado
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function listnotijor(Jornal $jornal)
     {
         $noticias = Noticia::with('user')
             ->with('jornal')
             ->with('seccao')
             ->where('jornal_id', $jornal->id)->get();
-
-        /*  $response = [
-            'data' => $noticias,
-            'message' => 'Listagem de notícias do jornal' . $jornal,
-            'result' => 'OK'
-        ]; */
 
         return view('lista-noticias-jornal')
             ->with('noticias', $noticias);
