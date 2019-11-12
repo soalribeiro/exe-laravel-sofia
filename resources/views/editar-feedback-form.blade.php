@@ -65,7 +65,7 @@
                                 </button>
                             </div>
                             <div class="col-md-2 offset-md-4">
-                                <a href="{{ route('lista-noticias') }}">
+                                <a href="{{ route('lista-feedbacks') }}">
                                     <button class="btn btn-danger" type="button">Cancelar</button>
                                 </a>
                             </div>
