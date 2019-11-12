@@ -80,7 +80,7 @@ class NoticiaApiController extends Controller
     /**
      * Mostrar notícia do ID recebido.
      * 
-     * @bodyParam id int required ID da notícia a editar.
+     * @bodyParam id int required ID da notícia a mostrar.
      *
      * @param  \App\Noticia  $noticia
      * @return \Illuminate\Http\Response

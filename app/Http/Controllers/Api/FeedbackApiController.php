@@ -5,21 +5,38 @@ namespace App\Http\Controllers\Api;
 use App\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\FeedbackApiStoreRequest;
+use App\Http\Requests\Api\FeedbackApiUpdateRequest;
+
+/**
+ * @group Feedback
+ * 
+ * Métodos para gerir feedbacks.
+ */
 
 class FeedbackApiController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar todos os feedbacks inseridos na base de dados.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $feedback = Feedback::with('user')->get();
+
+        $response = [
+            'data' => $feedback,
+            'message' => 'Listagem de feedbacks.',
+            'result' => 'OK'
+        ];
+
+        return response($response, 201);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar formulário para criar novo feedback.
+     * Deve ser feito um return do blade a mostrar ao utilizador.
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,29 +46,49 @@ class FeedbackApiController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Criar novo feedback.
+     *
+     * @bodyParam  descricao string required Descrição para o feedback a inserir.
+     * @bodyParam  noticia_id int required ID de uma das notícias inseridas.
+     * @bodyParam  user_id int required ID de um dos utilizadores inseridos.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeedbackApiStoreRequest $request)
     {
-        //
+        $data = $request->all();
+
+        $feedback = Feedback::create($data);
+
+        $response = [
+            'data' => $feedback,
+            'message' => 'O seu feedback foi inserido.',
+            'result' => 'OK'
+        ];
+
+        return $response;
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar feedback do ID recebido.
+     * 
+     * @bodyParam id int required ID do feedback a mostrar.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function show(Feedback $feedback)
     {
-        //
+        return $feedback
+            ->with('user')
+            ->with('noticia')
+            ->where('id', $feedback->id)->get();
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar formulário para editar feedback específico.
+     * Deve ser feito um return do blade a mostrar ao utilizador.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
@@ -62,25 +99,45 @@ class FeedbackApiController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Editar feedback específico.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feedback $feedback)
+    public function update(FeedbackApiUpdateRequest $request, Feedback $feedback)
     {
-        //
+        $data = $request->all();
+
+        $feedback->update($data);
+
+        $response = [
+            'data' => '',
+            'message' => 'Feedback editado.',
+            'result' => 'OK'
+        ];
+
+        return response($response, 201);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Apagar feedback específico.
+     * 
+     * @bodyParam id int required Enviar ID do feedback a eliminar.
      *
      * @param  \App\Feedback  $feedback
      * @return \Illuminate\Http\Response
      */
     public function destroy(Feedback $feedback)
     {
-        //
+        $feedback->delete();
+
+        $response = [
+            'data' => '',
+            'message' => 'Feedback apagado.',
+            'result' => 'OK'
+        ];
+
+        return response($response, 201);
     }
 }

@@ -20,12 +20,373 @@ Welcome to the generated API reference.
 
 <!-- END_INFO -->
 
+#Feedback
+
+
+Métodos para gerir feedbacks.
+<!-- START_baf680a48bc129f27432c80ec8921433 -->
+## Mostrar todos os feedbacks inseridos na base de dados.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (201):
+
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            "noticia_id": 4,
+            "user_id": 1,
+            "created_at": "2019-11-11 22:33:03",
+            "updated_at": "2019-11-11 22:33:14",
+            "deleted_at": null,
+            "user": {
+                "id": 1,
+                "name": "Administrator",
+                "email": "admin@tdi.pt",
+                "email_verified_at": null,
+                "role_id": 1,
+                "created_at": "2019-11-10 18:38:15",
+                "updated_at": "2019-11-10 18:38:15",
+                "deleted_at": null
+            }
+        }
+    ],
+    "message": "Listagem de feedbacks.",
+    "result": "OK"
+}
+```
+
+### HTTP Request
+`GET api/feedback`
+
+
+<!-- END_baf680a48bc129f27432c80ec8921433 -->
+
+<!-- START_59de906289e81ee5c26947cc935e52a4 -->
+## Mostrar formulário para criar novo feedback.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/create" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/create");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/feedback/create`
+
+
+<!-- END_59de906289e81ee5c26947cc935e52a4 -->
+
+<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+## Criar novo feedback.
+
+> Example request:
+
+```bash
+curl -X POST "http://localhost/api/feedback" \
+    -H "Content-Type: application/json" \
+    -d '{"descricao":"tenetur","noticia_id":17,"user_id":2}'
+
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "descricao": "tenetur",
+    "noticia_id": 17,
+    "user_id": 2
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/feedback`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    descricao | string |  required  | Descrição para o feedback a inserir.
+    noticia_id | integer |  required  | ID de uma das notícias inseridas.
+    user_id | integer |  required  | ID de um dos utilizadores inseridos.
+
+<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
+
+<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
+## Mostrar feedback do ID recebido.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":8}'
+
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 8
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+[
+    {
+        "id": 1,
+        "descricao": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "noticia_id": 4,
+        "user_id": 1,
+        "created_at": "2019-11-11 22:33:03",
+        "updated_at": "2019-11-11 22:33:14",
+        "deleted_at": null,
+        "user": {
+            "id": 1,
+            "name": "Administrator",
+            "email": "admin@tdi.pt",
+            "email_verified_at": null,
+            "role_id": 1,
+            "created_at": "2019-11-10 18:38:15",
+            "updated_at": "2019-11-10 18:38:15",
+            "deleted_at": null
+        },
+        "noticia": {
+            "id": 4,
+            "titulo-not": "Liberdade, ano zero",
+            "corpo-not": "Recordemos essa data tão auspiciosa de 9 de Novembro de 1989 – quando o impensável aconteceu com a queda do muro de Berlim –, buscando nela a inspiração e a força necessárias para voltar a acreditar no futuro.",
+            "image": "images\/NtLZf36X3YCJwpdbTTjvsDy2yvnh998KpswW44sv.jpeg",
+            "user_id": 1,
+            "jornal_id": 3,
+            "seccao_id": 4,
+            "tipo_id": 1,
+            "created_at": "2019-11-10 19:40:22",
+            "updated_at": "2019-11-10 19:40:22",
+            "deleted_at": null
+        }
+    }
+]
+```
+
+### HTTP Request
+`GET api/feedback/{feedback}`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | ID do feedback a mostrar.
+
+<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
+
+<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
+## Mostrar formulário para editar feedback específico.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
+
+> Example request:
+
+```bash
+curl -X GET -G "http://localhost/api/feedback/1/edit" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1/edit");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response:
+
+```json
+null
+```
+
+### HTTP Request
+`GET api/feedback/{feedback}/edit`
+
+
+<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
+
+<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
+## Editar feedback específico.
+
+> Example request:
+
+```bash
+curl -X PUT "http://localhost/api/feedback/1" 
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`PUT api/feedback/{feedback}`
+
+`PATCH api/feedback/{feedback}`
+
+
+<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
+
+<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
+## Apagar feedback específico.
+
+> Example request:
+
+```bash
+curl -X DELETE "http://localhost/api/feedback/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":3}'
+
+```
+
+```javascript
+const url = new URL("http://localhost/api/feedback/1");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 3
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`DELETE api/feedback/{feedback}`
+
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | Enviar ID do feedback a eliminar.
+
+<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
+
 #Jornais
 
 
 Métodos para gerir jornais.
 <!-- START_d984a021fe81033b627b61ae0096b7e7 -->
-## Mostrar todos os jornais com user associado.
+## Mostrar todos os jornais com utilizador associado.
 
 Este é o método para mostrar todos os jornais inseridos na base de dados e o utilizador que o criou.
 
@@ -239,7 +600,7 @@ Para inserir um novo jornal na base de dados deve enviar-se os campos apresentad
 ```bash
 curl -X POST "http://localhost/api/jornal" \
     -H "Content-Type: application/json" \
-    -d '{"titulo-jor":"alias","descricao-jor":"voluptate","image":"nihil","user_id":18}'
+    -d '{"titulo-jor":"repellat","descricao-jor":"laudantium","image":"nesciunt","user_id":2}'
 
 ```
 
@@ -252,10 +613,10 @@ let headers = {
 }
 
 let body = {
-    "titulo-jor": "alias",
-    "descricao-jor": "voluptate",
-    "image": "nihil",
-    "user_id": 18
+    "titulo-jor": "repellat",
+    "descricao-jor": "laudantium",
+    "image": "nesciunt",
+    "user_id": 2
 }
 
 fetch(url, {
@@ -463,7 +824,7 @@ Métodos para gerir notícias.
 <!-- START_3e0792dacbd9e7d214dcc50f52939226 -->
 ## Mostrar todas as notícias.
 
-Este é o método para mostrar todas as notícias inseridos na base de dados e o utilizador que o criou.
+Este é o método para mostrar todas as notícias inseridas na base de dados e o utilizador que o criou.
 
 > Example request:
 
@@ -632,7 +993,7 @@ fetch(url, {
             }
         }
     ],
-    "message": "Listagem de notícias",
+    "message": "Listagem de notícias.",
     "result": "OK"
 }
 ```
@@ -691,7 +1052,7 @@ null
 ```bash
 curl -X POST "http://localhost/api/noticia" \
     -H "Content-Type: application/json" \
-    -d '{"titulo-not":"est","corpo-not":"aspernatur","image":"et","jornal_id":3,"seccao_id":7}'
+    -d '{"titulo-not":"dolor","corpo-not":"explicabo","image":"corrupti","jornal_id":14,"seccao_id":6}'
 
 ```
 
@@ -704,11 +1065,11 @@ let headers = {
 }
 
 let body = {
-    "titulo-not": "est",
-    "corpo-not": "aspernatur",
-    "image": "et",
-    "jornal_id": 3,
-    "seccao_id": 7
+    "titulo-not": "dolor",
+    "corpo-not": "explicabo",
+    "image": "corrupti",
+    "jornal_id": 14,
+    "seccao_id": 6
 }
 
 fetch(url, {
@@ -745,7 +1106,7 @@ Parameter | Type | Status | Description
 ```bash
 curl -X GET -G "http://localhost/api/noticia/1" \
     -H "Content-Type: application/json" \
-    -d '{"id":16}'
+    -d '{"id":5}'
 
 ```
 
@@ -758,7 +1119,7 @@ let headers = {
 }
 
 let body = {
-    "id": 16
+    "id": 5
 }
 
 fetch(url, {
@@ -784,7 +1145,7 @@ fetch(url, {
 
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
-    id | integer |  required  | ID da notícia a editar.
+    id | integer |  required  | ID da notícia a mostrar.
 
 <!-- END_8cc30809f2423150c9e8944ef3c84fe2 -->
 
@@ -909,264 +1270,14 @@ Parameter | Type | Status | Description
 
 <!-- END_7b913bb5385521eaf328d30e7c974d63 -->
 
-#general
+#Secção
 
 
-<!-- START_baf680a48bc129f27432c80ec8921433 -->
-## Display a listing of the resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/feedback`
-
-
-<!-- END_baf680a48bc129f27432c80ec8921433 -->
-
-<!-- START_59de906289e81ee5c26947cc935e52a4 -->
-## Show the form for creating a new resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/create" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/create");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/feedback/create`
-
-
-<!-- END_59de906289e81ee5c26947cc935e52a4 -->
-
-<!-- START_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-## Store a newly created resource in storage.
-
-> Example request:
-
-```bash
-curl -X POST "http://localhost/api/feedback" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "POST",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`POST api/feedback`
-
-
-<!-- END_cadad8c9a7cbcb11ced37c6856fbbc6a -->
-
-<!-- START_6beeac038cb8ca4b2978acd173b139b5 -->
-## Display the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/feedback/{feedback}`
-
-
-<!-- END_6beeac038cb8ca4b2978acd173b139b5 -->
-
-<!-- START_e491efb20fa14fe8f3bd18f993a578f7 -->
-## Show the form for editing the specified resource.
-
-> Example request:
-
-```bash
-curl -X GET -G "http://localhost/api/feedback/1/edit" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1/edit");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "GET",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-> Example response:
-
-```json
-null
-```
-
-### HTTP Request
-`GET api/feedback/{feedback}/edit`
-
-
-<!-- END_e491efb20fa14fe8f3bd18f993a578f7 -->
-
-<!-- START_fefba5f94dcda41b14d0fa6a79f36016 -->
-## Update the specified resource in storage.
-
-> Example request:
-
-```bash
-curl -X PUT "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "PUT",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`PUT api/feedback/{feedback}`
-
-`PATCH api/feedback/{feedback}`
-
-
-<!-- END_fefba5f94dcda41b14d0fa6a79f36016 -->
-
-<!-- START_8b1a50e1fea2157b10de19ada2143dee -->
-## Remove the specified resource from storage.
-
-> Example request:
-
-```bash
-curl -X DELETE "http://localhost/api/feedback/1" 
-```
-
-```javascript
-const url = new URL("http://localhost/api/feedback/1");
-
-let headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-}
-
-fetch(url, {
-    method: "DELETE",
-    headers: headers,
-})
-    .then(response => response.json())
-    .then(json => console.log(json));
-```
-
-
-
-### HTTP Request
-`DELETE api/feedback/{feedback}`
-
-
-<!-- END_8b1a50e1fea2157b10de19ada2143dee -->
-
+Métodos para gerir secções.
 <!-- START_030396ffd2b4f1352cc510e7450ccc38 -->
-## Display a listing of the resource.
+## Mostrar todas as secções.
+
+Este é o método para mostrar todas as secções inseridas na base de dados.
 
 > Example request:
 
@@ -1191,10 +1302,50 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (200):
 
 ```json
-null
+{
+    "data": [
+        {
+            "id": 1,
+            "titulo_sec": "Política",
+            "created_at": "2019-11-10 18:45:44",
+            "updated_at": "2019-11-10 18:45:44",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "titulo_sec": "Economia",
+            "created_at": "2019-11-10 18:45:49",
+            "updated_at": "2019-11-10 18:45:49",
+            "deleted_at": null
+        },
+        {
+            "id": 3,
+            "titulo_sec": "Tecnologia",
+            "created_at": "2019-11-10 18:45:57",
+            "updated_at": "2019-11-10 18:45:57",
+            "deleted_at": null
+        },
+        {
+            "id": 4,
+            "titulo_sec": "Sociedade",
+            "created_at": "2019-11-10 19:24:53",
+            "updated_at": "2019-11-10 19:24:53",
+            "deleted_at": null
+        },
+        {
+            "id": 6,
+            "titulo_sec": "secçãooo00",
+            "created_at": "2019-11-12 00:30:37",
+            "updated_at": "2019-11-12 00:32:05",
+            "deleted_at": null
+        }
+    ],
+    "message": "Listagem de secções.",
+    "result": "OK"
+}
 ```
 
 ### HTTP Request
@@ -1204,7 +1355,9 @@ null
 <!-- END_030396ffd2b4f1352cc510e7450ccc38 -->
 
 <!-- START_0ae5b2c562c6674109b23c55f6dd26ea -->
-## Show the form for creating a new resource.
+## Mostrar formulário para criar nova secção.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
 
 > Example request:
 
@@ -1242,25 +1395,33 @@ null
 <!-- END_0ae5b2c562c6674109b23c55f6dd26ea -->
 
 <!-- START_1b1f7d56556b7285bfc23844b38df594 -->
-## Store a newly created resource in storage.
+## Criar nova secção.
 
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/seccao" 
+curl -X POST "http://localhost/api/seccao" \
+    -H "Content-Type: application/json" \
+    -d '{"titulo_sec":"deserunt"}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/seccao");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "titulo_sec": "deserunt"
 }
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -1271,49 +1432,77 @@ fetch(url, {
 ### HTTP Request
 `POST api/seccao`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    titulo_sec | string |  required  | Título de secção.
 
 <!-- END_1b1f7d56556b7285bfc23844b38df594 -->
 
 <!-- START_14b169b792b9c2b6de9d5cd55878769a -->
-## Display the specified resource.
+## Mostrar secção do ID recebido.
 
 > Example request:
 
 ```bash
-curl -X GET -G "http://localhost/api/seccao/1" 
+curl -X GET -G "http://localhost/api/seccao/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":19}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/seccao/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 19
 }
 
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
 ```
 
 
-> Example response:
+> Example response (200):
 
 ```json
-null
+[
+    {
+        "id": 1,
+        "titulo_sec": "Política",
+        "created_at": "2019-11-10 18:45:44",
+        "updated_at": "2019-11-10 18:45:44",
+        "deleted_at": null
+    }
+]
 ```
 
 ### HTTP Request
 `GET api/seccao/{seccao}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | ID da secção a editar.
 
 <!-- END_14b169b792b9c2b6de9d5cd55878769a -->
 
 <!-- START_4705ad5a54d1163f8d4b2b697cb660f0 -->
-## Show the form for editing the specified resource.
+## Mostrar formulário para editar secção específica.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
 
 > Example request:
 
@@ -1351,7 +1540,7 @@ null
 <!-- END_4705ad5a54d1163f8d4b2b697cb660f0 -->
 
 <!-- START_b81882dcd03a927ddf68a119e1587ef4 -->
-## Update the specified resource in storage.
+## Editar secção específica.
 
 > Example request:
 
@@ -1386,25 +1575,33 @@ fetch(url, {
 <!-- END_b81882dcd03a927ddf68a119e1587ef4 -->
 
 <!-- START_93f52473e766962fb6e3ef5b7362a130 -->
-## Remove the specified resource from storage.
+## Apagar secção específica.
 
 > Example request:
 
 ```bash
-curl -X DELETE "http://localhost/api/seccao/1" 
+curl -X DELETE "http://localhost/api/seccao/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":9}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/seccao/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 9
 }
 
 fetch(url, {
     method: "DELETE",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -1415,11 +1612,20 @@ fetch(url, {
 ### HTTP Request
 `DELETE api/seccao/{seccao}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | Enviar ID da secção a eliminar.
 
 <!-- END_93f52473e766962fb6e3ef5b7362a130 -->
 
+#Tipo
+
+
+Métodos para gerir tipos de notícia.
 <!-- START_07e7f3ae367cb99564afa991e133a461 -->
-## Display a listing of the resource.
+## Mostrar todos os tipos inseridos na base de dados.
 
 > Example request:
 
@@ -1444,10 +1650,31 @@ fetch(url, {
 ```
 
 
-> Example response:
+> Example response (201):
 
 ```json
-null
+{
+    "data": [
+        {
+            "id": 1,
+            "nome_tipo": "Texto de opinião",
+            "descricao_tipo": "Em Jornalismo, um artigo é um texto eminentemente opinativo — mais que informativo — publicado em secção destacada do conteúdo noticioso. Os autores recorrentes de artigos são chamados de articulistas.",
+            "created_at": "2019-11-10 19:20:11",
+            "updated_at": "2019-11-10 19:20:11",
+            "deleted_at": null
+        },
+        {
+            "id": 2,
+            "nome_tipo": "Notícia",
+            "descricao_tipo": "A notícia é um formato de divulgação de um acontecimento por meios jornalísticos. É a matéria-prima do Jornalismo, normalmente reconhecida como algum dado ou evento socialmente relevante que merece publicação em um meio de comunicação social.",
+            "created_at": "2019-11-10 19:25:55",
+            "updated_at": "2019-11-10 19:36:10",
+            "deleted_at": null
+        }
+    ],
+    "message": "Listagem de tipos de notícia.",
+    "result": "OK"
+}
 ```
 
 ### HTTP Request
@@ -1457,7 +1684,9 @@ null
 <!-- END_07e7f3ae367cb99564afa991e133a461 -->
 
 <!-- START_26d20894bfb7310b4c3140ce204e3adc -->
-## Show the form for creating a new resource.
+## Mostrar formulário para criar novo tipo de notícia.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
 
 > Example request:
 
@@ -1495,25 +1724,34 @@ null
 <!-- END_26d20894bfb7310b4c3140ce204e3adc -->
 
 <!-- START_80a06024db4f0d37a70ede1272c3a4d5 -->
-## Store a newly created resource in storage.
+## Criar novo feedback.
 
 > Example request:
 
 ```bash
-curl -X POST "http://localhost/api/tipo" 
+curl -X POST "http://localhost/api/tipo" \
+    -H "Content-Type: application/json" \
+    -d '{"nome_tipo":"consequatur","descricao_tipo":2}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/tipo");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "nome_tipo": "consequatur",
+    "descricao_tipo": 2
 }
 
 fetch(url, {
     method: "POST",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -1524,49 +1762,79 @@ fetch(url, {
 ### HTTP Request
 `POST api/tipo`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    nome_tipo | string |  required  | Nome para o tipo a inserir.
+    descricao_tipo | integer |  required  | Descrição do tipo de notícia.
 
 <!-- END_80a06024db4f0d37a70ede1272c3a4d5 -->
 
 <!-- START_f695ab48314b4d59f8f1ea5d829afe74 -->
-## Display the specified resource.
+## Mostrar tipo de notícia do ID recebido.
 
 > Example request:
 
 ```bash
-curl -X GET -G "http://localhost/api/tipo/1" 
+curl -X GET -G "http://localhost/api/tipo/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":19}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/tipo/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 19
 }
 
 fetch(url, {
     method: "GET",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
 ```
 
 
-> Example response:
+> Example response (200):
 
 ```json
-null
+[
+    {
+        "id": 1,
+        "nome_tipo": "Texto de opinião",
+        "descricao_tipo": "Em Jornalismo, um artigo é um texto eminentemente opinativo — mais que informativo — publicado em secção destacada do conteúdo noticioso. Os autores recorrentes de artigos são chamados de articulistas.",
+        "created_at": "2019-11-10 19:20:11",
+        "updated_at": "2019-11-10 19:20:11",
+        "deleted_at": null
+    }
+]
 ```
 
 ### HTTP Request
 `GET api/tipo/{tipo}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | ID do tipo de notícia a mostrar.
 
 <!-- END_f695ab48314b4d59f8f1ea5d829afe74 -->
 
 <!-- START_fc3faaddf5db2691ce9cbe79e1408004 -->
-## Show the form for editing the specified resource.
+## Mostrar formulário para editar tipo de notícia específico.
+
+Deve ser feito um return do blade a mostrar ao utilizador.
 
 > Example request:
 
@@ -1604,7 +1872,7 @@ null
 <!-- END_fc3faaddf5db2691ce9cbe79e1408004 -->
 
 <!-- START_208c69de33e9cfaba5c8dccd74aebec5 -->
-## Update the specified resource in storage.
+## Editar tipo de notícia específico.
 
 > Example request:
 
@@ -1639,25 +1907,33 @@ fetch(url, {
 <!-- END_208c69de33e9cfaba5c8dccd74aebec5 -->
 
 <!-- START_7c0de1b3482697b6ea2f65ccaa6f0c49 -->
-## Remove the specified resource from storage.
+## Apagar tipo de notícia específico.
 
 > Example request:
 
 ```bash
-curl -X DELETE "http://localhost/api/tipo/1" 
+curl -X DELETE "http://localhost/api/tipo/1" \
+    -H "Content-Type: application/json" \
+    -d '{"id":10}'
+
 ```
 
 ```javascript
 const url = new URL("http://localhost/api/tipo/1");
 
 let headers = {
-    "Accept": "application/json",
     "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 10
 }
 
 fetch(url, {
     method: "DELETE",
     headers: headers,
+    body: body
 })
     .then(response => response.json())
     .then(json => console.log(json));
@@ -1668,6 +1944,11 @@ fetch(url, {
 ### HTTP Request
 `DELETE api/tipo/{tipo}`
 
+#### Body Parameters
+
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    id | integer |  required  | Enviar ID do tipo a eliminar.
 
 <!-- END_7c0de1b3482697b6ea2f65ccaa6f0c49 -->
 

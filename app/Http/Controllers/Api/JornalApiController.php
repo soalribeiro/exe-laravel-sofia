@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\JornalApiStoreRequest;
 use App\Http\Requests\Api\JornalApiUpdateRequest;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * @group Jornais
@@ -18,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
 class JornalApiController extends Controller
 {
     /**
-     * Mostrar todos os jornais com user associado.
+     * Mostrar todos os jornais com utilizador associado.
      * Este é o método para mostrar todos os jornais inseridos na base de dados e o utilizador que o criou.
      *
      * @return \Illuminate\Http\Response

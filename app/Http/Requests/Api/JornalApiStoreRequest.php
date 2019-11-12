@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Requests\Api;
-
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-
 class JornalApiStoreRequest extends FormRequest
 {
     /**
@@ -17,7 +14,6 @@ class JornalApiStoreRequest extends FormRequest
     {
         return true;
     }
-
     /**
      * Get the validation rules that apply to the request.
      *
@@ -32,7 +28,6 @@ class JornalApiStoreRequest extends FormRequest
             'user_id' => 'required|exists:users,id'
         ];
     }
-
     public function messages()
     {
         return [
@@ -48,7 +43,6 @@ class JornalApiStoreRequest extends FormRequest
             'user_id.exists' => 'Esse utilizador não existe.'
         ];
     }
-
     protected function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(

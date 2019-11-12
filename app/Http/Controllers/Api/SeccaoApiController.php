@@ -70,7 +70,9 @@ class SeccaoApiController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar secção do ID recebido.
+     * 
+     * @bodyParam id int required ID da secção a editar.
      *
      * @param  \App\Seccao  $seccao
      * @return \Illuminate\Http\Response
