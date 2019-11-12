@@ -6,8 +6,9 @@ Projeto individual de Sofia Ribeiro - 85382. Ver instruções de instalação ab
 * Abrir o XAMPP e iniciar o *Apache* e  o *MySQL*;
 * De seguida, dentro da pasta deste projeto, na linha de comandos, escrever `npm install` e `composer install` para instalar dependências;
 * `npm run watch` para iniciar o projeto;
-* Explorar a documentação da API através do menu "Documentação";
-* Criar utilizadores com `php artisan db:seed`;
+* Explorar a documentação da API através da opção do menu "Documentação";
+* Criar utilizadores através da execução do comando `php artisan db:seed`;
 * Experimentar as *features* disponíveis como **admin**, **editor** e **reporter**.
 
 ##### Autor: Sofia Ribeiro | 85382
+##### MCMM MI - TDI 2019
