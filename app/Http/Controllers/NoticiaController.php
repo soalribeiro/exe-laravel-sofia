@@ -7,10 +7,10 @@ use App\User;
 use App\Jornal;
 use App\Seccao;
 use App\Noticia;
+use App\Feedback;
 use Illuminate\Http\Request;
 use App\Http\Requests\NoticiaStoreRequest;
 use App\Http\Requests\NoticiaUpdateRequest;
-
 
 class NoticiaController extends Controller
 {
@@ -57,13 +57,25 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    
-    public function show(Noticia $noticia)
+
+    public function show(Noticia $noticium)
     {
-        return $noticia;
+        $feedback = Feedback::with('noticia')
+            ->with('user')
+            ->where('noticia_id', $noticium->id)->get();
+
+        $noticia = Noticia::with('user')
+            ->with('jornal')
+            ->with('tipo')
+            ->with('seccao')
+            ->where('id', $noticium->id)->get();
+
+        return view('noticia')
+            ->with('noticia', $noticia)
+            ->with('feedbacks', $feedback);
     }
 
-    
+
     public function edit(Noticia $noticium)
     {
         $seccaos = Seccao::all();
@@ -77,7 +89,7 @@ class NoticiaController extends Controller
             ->with('noticia', $noticium);
     }
 
-    
+
     public function update(NoticiaUpdateRequest $request, Noticia $noticium)
     {
         $data = $request->all();
@@ -101,7 +113,7 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    
+
     public function destroy(Noticia $noticium)
     {
         $noticium->delete();
@@ -109,7 +121,7 @@ class NoticiaController extends Controller
         return redirect()->route('lista-noticias');
     }
 
-    
+
     public function listnotijor(Jornal $jornal)
     {
         $noticias = Noticia::with('user')

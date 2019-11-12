@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.bo')
 
 @section('content')
 <div class="container">
@@ -22,12 +22,19 @@
                     <div class="card-body">
                         <p class="card-text text-right"><strong>{{ $noticia->seccao->titulo_sec }} </strong></p>
 
+                        <p class="card-text small" style="color: grey;">{{ $noticia->tipo->nome_tipo }}</p>
+
                         <h4 class="card-title">{{ $noticia->{'titulo-not'} }}</h4>
 
                         <p class="card-text">{{ $noticia->{'corpo-not'} }}</p>
 
                         <p class="blockquote-footer text-right"><cite title="Source Title">{{ $noticia->user->name }}</cite></p>
 
+                        <div class="row">
+                            <div class="col-md-8 text-left">
+                                <a href="{{ route('noticia', $noticia->id) }}" class="btn btn-primary">Ler notícia</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

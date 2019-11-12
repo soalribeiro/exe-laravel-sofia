@@ -22,7 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 /* Reporter, Editor e Admin */
 Route::group(
-    ['middleware' => ['auth', 'role:reporter|editor|admin']],
+    ['middleware' => ['auth', 'role:reporter|editor|admin|manager']],
     function () {
         /* inserir notícias */
         Route::get('/inserir-noticia', 'NoticiaController@create')->name('inserir-noticia-form');
@@ -102,6 +102,7 @@ Route::get('/jornais', 'JornalController@index')->name('lista-jornais');
 
 /* mostrar notícias */
 Route::get('/noticias', 'NoticiaController@index')->name('lista-noticias');
+Route::get('/noticia/{noticium}', 'NoticiaController@show')->name('noticia');
 
 /* mostrar notícias de determinado jornal */
 Route::get('/lista-noticias-jornal/{jornal}', 'NoticiaController@listnotijor')->name('lista-noticias-jornal');

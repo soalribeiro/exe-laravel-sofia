@@ -20,12 +20,14 @@
 
                 <div class="card mx-2 mb-2" style="width: 18rem;">
 
-                    <img src="/uploads/{{ $noticia->image }}" class="card-img-top">
+                    <a href="{{ route('noticia', $noticia->id) }}">
+                        <img src="/uploads/{{ $noticia->image }}" class="card-img-top">
+                    </a>
+
                     <div class="card-body">
                         <p class="card-text text-right"><strong>{{ $noticia->seccao->titulo_sec }} </strong></p>
 
                         <p class="card-text small" style="color: grey;">{{ $noticia->tipo->nome_tipo }}</p>
-
 
                         <h4 class="card-title">{{ $noticia->{'titulo-not'} }}</h4>
 
@@ -35,19 +37,25 @@
 
                         <p class="blockquote-footer text-right"><cite title="Source Title">{{ $noticia->user->name }}</cite></p>
 
-                        @auth
-                        @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
                         <div class="row">
-                            <div class="col-md-8">
-                                <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-outline-primary">Editar notícia</a>
+                            <div class="col-md-8 text-left">
+                                <a href="{{ route('noticia', $noticia->id) }}" class="btn btn-primary">Ler notícia</a>
                             </div>
                         </div>
 
-                        <div class="col-md-12 text-right pr-0 mt-4">
+                        @auth
+                        @if (Auth::user()->role->name === 'admin' || Auth::user()->role->name === 'editor')
+                        <div class="row">
+                            <div class="col-md-12 text-center pr-0 mt-4">
+                                <a href="{{ route('editar-noticia-form', $noticia->id) }}" class="btn btn-outline-primary btn-sm">Editar notícia</a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 text-center pr-0 mt-4">
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#eliminarNot{{ $noticia->id }}">Apagar notícia</button>
                         </div>
 
-                        <div class="col-md-12 text-right pr-0 mt-1">
+                        <div class="col-md-12 text-center pr-0 mt-1">
                             <a href="{{ route('lista-fb-noticia', $noticia->id) }}" class="btn btn-success btn-sm">Enviar feedback</a>
                         </div>
                         @endif

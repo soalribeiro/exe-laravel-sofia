@@ -31,12 +31,6 @@ class FeedbackController extends Controller
             ->with('noticia')->get()
             ->reverse();
 
-        $response = [
-            'data' => $feedbacks,
-            'message' => 'Listagem de feedbacks',
-            'result' => 'OK'
-        ];
-
         return view('feedbacks')
             ->with('feedbacks', $feedbacks);
     }
@@ -67,12 +61,6 @@ class FeedbackController extends Controller
         $data = $request->all();
 
         $feedbacks = Feedback::create($data);
-
-        $response = [
-            'data' => $feedbacks,
-            'message' => 'Secção criada.',
-            'result' => 'OK'
-        ];
 
         return redirect()->route('lista-feedbacks');
     }
@@ -161,12 +149,6 @@ class FeedbackController extends Controller
         $data = $request->all();
 
         $feedback = Feedback::create($data);
-
-        $response = [
-            'data' => $feedback,
-            'message' => 'Feedback enviado.',
-            'result' => 'OK'
-        ];
 
         return redirect()->route('lista-noticias');
     }
