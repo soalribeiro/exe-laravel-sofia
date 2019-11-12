@@ -7,6 +7,7 @@ Projeto individual de Sofia Ribeiro - 85382. Ver instruções de instalação ab
 * De seguida, dentro da pasta deste projeto, na linha de comandos, escrever `npm install` e `composer install` para instalar dependências;
 * `npm run watch` para iniciar o projeto;
 * Explorar a documentação da API através do menu "Documentação";
+* Criar utilizadores com `php artisan db:seed`;
 * Experimentar as *features* disponíveis como **admin**, **editor** e **reporter** (estas duas últimas devem ser adicionadas nas *roles* através do *phpMyAdmin*).
 
 ##### Autor: Sofia Ribeiro | 85382
