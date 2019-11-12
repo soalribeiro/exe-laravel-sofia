@@ -18,7 +18,7 @@ class NoticiaApiController extends Controller
 {
     /**
      * Mostrar todas as notícias.
-     * Este é o método para mostrar todas as notícias inseridos na base de dados e o utilizador que o criou.
+     * Este é o método para mostrar todas as notícias inseridas na base de dados e o utilizador que o criou.
      *
      * @return \Illuminate\Http\Response
      */
@@ -28,7 +28,7 @@ class NoticiaApiController extends Controller
 
         $response = [
             'data' => $noticias,
-            'message' => 'Listagem de notícias',
+            'message' => 'Listagem de notícias.',
             'result' => 'OK'
         ];
 

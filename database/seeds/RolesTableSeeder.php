@@ -23,5 +23,13 @@ class RolesTableSeeder extends Seeder
         \App\Role::create([
             'name' => 'user',
         ]);
+
+        \App\Role::create([
+            'name' => 'editor',
+        ]);
+
+        \App\Role::create([
+            'name' => 'reporter',
+        ]);
     }
 }
